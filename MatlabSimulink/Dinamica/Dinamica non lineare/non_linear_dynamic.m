@@ -24,7 +24,7 @@ F21p = X(19);
 F22p = X(20);
 %% Parametri
 
-[ms, t, l, Jm, k, J11, J12, J13, J22, J23, J33] = params_drone;
+[ms, t, l, Jm, k, J11, J12, J13, J22, J23, J33, g] = params_drone;
 
 %% Derivata dello stato
 
