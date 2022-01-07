@@ -1,0 +1,46 @@
+%implements s0_b0_mesh_ForcingFunction "C"
+
+%function ForcingFunction(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+static const int8_T ir[13] = { 0, 1, 2, 3, 4, 5, 5, 6, 7, 8, 8, 8, 8 };
+static const int8_T ir_0[13] = { 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 3, 4 };
+static const int8_T jc[8] = { 3, 4, 5, 7, 6, 9, 10, 11 };
+DroneOptimalPlanningModelClass::XDot *_rtXdot;
+int_T ci;
+int_T is;
+%closefile localVarDecl
+_rtXdot = %<(SLibCG_SE(SLibGetContStatesDerivativeStructPtr()))>;
+/* {S!d26}ForcingFunction for StateSpace: '<Root>/Continous space' */
+/*@>586f*/for (/*@>b4f0*/is = /*@>69df*/0; /*@>b4f8*/is < /*@>69e0*/12; /*@>b4f5*/is/*@>b52a*/++) {
+    /*@>a427*/_rtXdot->/*@>b5d4*/Continousspace_CSTATE/*@>1329*/[/*@>6987*/is]/*@>132d*/ = /*@>6986*/0.0;
+/*@>b515*/    for (/*@>b50d*/ci/*@>b50c*/ = /*@>b510*/ir/*@>b50f*/[/*@>b512*/is]; /*@>b4fe*/ci/*@>b4fc*/ < /*@>b501*/ir/*@>b500*/[/*@>b504*/is/*@>b502*/ + /*@>b505*/1]; /*@>b507*/ci/*@>b52c*/++) {
+        /*@>a435*/_rtXdot->/*@>b5da*/Continousspace_CSTATE/*@>4f78*/[/*@>69ba*/is]/*@>b52e*/ += /*@>a37c*/rtConstP./*@>b5cb*/Continousspace_A/*@>9d35*/[/*@>9d32*/ci]/*@>6a66*/ * /*@>a39f*/rtX./*@>b5d1*/Continousspace_CSTATE/*@>9d45*/[/*@>9d40*/jc/*@>9d3f*/[/*@>9d42*/ci]];
+    }
+}
+/*@>583b*/for (/*@>b4b4*/is = /*@>69da*/0; /*@>b4bc*/is < /*@>69db*/12; /*@>b4b9*/is/*@>b52b*/++) {
+/*@>b4d9*/    for (/*@>b4d1*/ci/*@>b4d0*/ = /*@>b4d4*/ir_0/*@>b4d3*/[/*@>b4d6*/is]; /*@>b4c2*/ci/*@>b4c0*/ < /*@>b4c5*/ir_0/*@>b4c4*/[/*@>b4c8*/is/*@>b4c6*/ + /*@>b4c9*/1]; /*@>b4cb*/ci/*@>b52d*/++) {
+        /*@>a44a*/_rtXdot->/*@>b5e0*/Continousspace_CSTATE/*@>5059*/[/*@>69d8*/is]/*@>b52f*/ += /*@>a382*/rtConstP./*@>b5ce*/Continousspace_B/*@>9d5f*/[/*@>9d5c*/ci]/*@>6a6a*/ * /*@>a55d*/rtDW./*@>b5e9*/FromWorkspace/*@>9d65*/[/*@>9d62*/ci];
+    }
+    /* {S!d24}ForcingFunction for Integrator: '<Root>/Integrator' */
+    /*@>a443*/_rtXdot->/*@>b5dd*/Integrator_CSTATE/*@>4fca*/[/*@>69c5*/is]/*@>4122*/ = /*@>a557*/rtDW./*@>b5e6*/Nonlinearsystem/*@>9d59*/[/*@>9d56*/is];
+}
+/* {E!d26}End of ForcingFunction for StateSpace: '<Root>/Continous space' */
+
+/* {S!d28}ForcingFunction for Integrator: '<Root>/Integrator1' */
+/*@>a42e*/_rtXdot->/*@>b5d7*/Integrator1_CSTATE/*@>13e2*/ = /*@>a551*/rtDW./*@>b5e3*/FromWorkspace/*@>9d21*/[/*@>9d1e*/3];
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedForcingFunctionLocalVars", localVarDecl)>
+%endfunction
+%function ForcingFunctionFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void ForcingFunction(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 3, fcnProtoType)>
+%endfunction

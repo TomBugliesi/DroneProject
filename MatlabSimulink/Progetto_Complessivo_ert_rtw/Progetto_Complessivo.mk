@@ -2,7 +2,7 @@
 ## Makefile generated for component 'Progetto_Complessivo'. 
 ## 
 ## Makefile     : Progetto_Complessivo.mk
-## Generated on : Sat Dec 11 00:24:43 2021
+## Generated on : Mon Jan 03 23:03:25 2022
 ## Final product: $(RELATIVE_PATH_TO_ANCHOR)/Progetto_Complessivo.elf
 ## Product type : executable
 ## 
@@ -212,7 +212,7 @@ DEFINES_BUILD_ARGS = -DCLASSIC_INTERFACE=0 -DALLOCATIONFCN=0 -DONESTEPFCN=1 -DTE
 DEFINES_CUSTOM = 
 DEFINES_OPTS = -DTID01EQ=0
 DEFINES_SKIPFORSIL = -DXCP_CUSTOM_PLATFORM -DEXIT_FAILURE=1 -DEXTMODE_DISABLEPRINTF -DEXTMODE_DISABLETESTING -DEXTMODE_DISABLE_ARGS_PROCESSING=1 -DSTACK_SIZE=64 -DRT
-DEFINES_STANDARD = -DMODEL=Progetto_Complessivo -DNUMST=3 -DNCSTATES=0 -DHAVESTDIO -DMODEL_HAS_DYNAMICALLY_LOADED_SFCNS=0
+DEFINES_STANDARD = -DMODEL=Progetto_Complessivo -DNUMST=2 -DNCSTATES=0 -DHAVESTDIO -DMODEL_HAS_DYNAMICALLY_LOADED_SFCNS=0
 
 DEFINES = $(DEFINES_) $(DEFINES_BUILD_ARGS) $(DEFINES_CUSTOM) $(DEFINES_OPTS) $(DEFINES_SKIPFORSIL) $(DEFINES_STANDARD)
 
@@ -220,7 +220,7 @@ DEFINES = $(DEFINES_) $(DEFINES_BUILD_ARGS) $(DEFINES_CUSTOM) $(DEFINES_OPTS) $(
 ## SOURCE FILES
 ###########################################################################
 
-SRCS = C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinobase/src/MW_arduinoI2C.cpp C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinobase/src/MW_ServoWriteRead.cpp C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinobase/src/io_wrappers.cpp C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinobase/src/MW_Ultrasonic.cpp $(START_DIR)/Progetto_Complessivo_ert_rtw/Progetto_Complessivo.c $(START_DIR)/Progetto_Complessivo_ert_rtw/Progetto_Complessivo_data.c $(START_DIR)/Progetto_Complessivo_ert_rtw/rtGetInf.c $(START_DIR)/Progetto_Complessivo_ert_rtw/rtGetNaN.c $(START_DIR)/Progetto_Complessivo_ert_rtw/rt_nonfinite.c C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinotarget/registry/../src/MW_ArduinoHWInit.cpp C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinotarget/registry/../scheduler/src/arduinoAVRScheduler.cpp
+SRCS = C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinobase/src/MW_arduinoI2C.cpp C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinobase/src/MW_ServoWriteRead.cpp C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinobase/src/io_wrappers.cpp $(START_DIR)/Progetto_Complessivo_ert_rtw/Progetto_Complessivo.c $(START_DIR)/Progetto_Complessivo_ert_rtw/Progetto_Complessivo_data.c $(START_DIR)/Progetto_Complessivo_ert_rtw/rtGetInf.c $(START_DIR)/Progetto_Complessivo_ert_rtw/rtGetNaN.c $(START_DIR)/Progetto_Complessivo_ert_rtw/rt_nonfinite.c C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinotarget/registry/../src/MW_ArduinoHWInit.cpp C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinotarget/registry/../scheduler/src/arduinoAVRScheduler.cpp
 
 MAIN_SRC = $(START_DIR)/Progetto_Complessivo_ert_rtw/ert_main.c
 
@@ -230,7 +230,7 @@ ALL_SRCS = $(SRCS) $(MAIN_SRC)
 ## OBJECTS
 ###########################################################################
 
-OBJS = MW_arduinoI2C.o MW_ServoWriteRead.o io_wrappers.o MW_Ultrasonic.o Progetto_Complessivo.o Progetto_Complessivo_data.o rtGetInf.o rtGetNaN.o rt_nonfinite.o MW_ArduinoHWInit.o arduinoAVRScheduler.o
+OBJS = MW_arduinoI2C.o MW_ServoWriteRead.o io_wrappers.o Progetto_Complessivo.o Progetto_Complessivo_data.o rtGetInf.o rtGetNaN.o rt_nonfinite.o MW_ArduinoHWInit.o arduinoAVRScheduler.o
 
 MAIN_OBJ = ert_main.o
 
@@ -514,10 +514,6 @@ MW_ServoWriteRead.o : C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/targe
 
 
 io_wrappers.o : C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinobase/src/io_wrappers.cpp
-	$(CPP) $(CPPFLAGS) -o "$@" "$<"
-
-
-MW_Ultrasonic.o : C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinobase/src/MW_Ultrasonic.cpp
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 

@@ -1,0 +1,37 @@
+%implements s0_b0_mesh_ModelInitialize "C"
+
+%function ModelInitialize(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%assign tlcStartFcnOfS0B0 = OpaqueTLCBlockFcn("Start", 0, 0, 0, 5, 0)
+%<SLibInsertAsyncTaskInitializeCode(system)>
+%<SLibWriteMachineInitialize()>
+%<SLibCGIRDumpSystemUserCode(0, "Start", "Header")>\
+%<SLibCGIRDumpSystemUserCode(0, "Start", "Body")>\
+%if !WHITE_SPACE(tlcStartFcnOfS0B0)
+/* Start for FromWorkspace: '<Root>/From Workspace' */
+%<tlcStartFcnOfS0B0>\
+%endif
+%<SLibCGIRDumpSystemUserCode(0, "Start", "Trailer")>\
+/* InitializeConditions for StateSpace: '<Root>/Continous space' */
+/*@>92ce*/std::memset(&/*@>a3b1*/rtX./*@>b682*/Continousspace_CSTATE/*@>8811*/[/*@>87ff*/0], 0, /*@>880f*/12U/*@>8817*/ * /*@>8816*/sizeof(real_T));
+/* InitializeConditions for Integrator: '<Root>/Integrator' */
+/*@>92d0*/std::memset(&/*@>a3b7*/rtX./*@>b685*/Integrator_CSTATE/*@>8828*/[/*@>880d*/0], 0, /*@>8826*/12U/*@>882e*/ * /*@>882d*/sizeof(real_T));
+/* InitializeConditions for Derivative: '<Root>/Derivative' */
+/*@>a587*/rtDW./*@>b68b*/TimeStampA/*@>147f*/ = /*@>6a37*/%<LibGetMathConstant(LibRealNonFinite("inf"), FcnGetDataTypeIdFromName("double"))>;
+/*@>a58d*/rtDW./*@>b68e*/TimeStampB/*@>1483*/ = /*@>6a3a*/%<LibGetMathConstant(LibRealNonFinite("inf"), FcnGetDataTypeIdFromName("double"))>;
+/* InitializeConditions for Integrator: '<Root>/Integrator1' */
+/*@>a3bd*/rtX./*@>b688*/Integrator1_CSTATE/*@>1494*/ = /*@>6a47*/0.0;
+%<SLibInsertInitPeriodicCStatesFcn(system)>
+%closefile cfgTxt
+%<cfgTxt>
+%endfunction
+%function ModelInitializeFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void ModelInitialize(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 5, fcnProtoType)>
+%endfunction

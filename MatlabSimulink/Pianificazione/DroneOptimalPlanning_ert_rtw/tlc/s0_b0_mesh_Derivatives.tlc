@@ -1,0 +1,46 @@
+%implements s0_b0_mesh_Derivatives "C"
+
+%function Derivatives(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+static const int8_T ir[13] = { 0, 1, 2, 3, 4, 5, 5, 6, 7, 8, 8, 8, 8 };
+static const int8_T ir_0[13] = { 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 3, 4 };
+static const int8_T jc[8] = { 3, 4, 5, 7, 6, 9, 10, 11 };
+DroneOptimalPlanningModelClass::XDot *_rtXdot;
+int_T ci;
+int_T is;
+%closefile localVarDecl
+_rtXdot = %<(SLibCG_SE(SLibGetContStatesDerivativeStructPtr()))>;
+/* {S!d20}Derivatives for StateSpace: '<Root>/Continous space' */
+/*@>581e*/for (/*@>b369*/is = /*@>695b*/0; /*@>b371*/is < /*@>695c*/12; /*@>b36e*/is/*@>b3a3*/++) {
+    /*@>a3df*/_rtXdot->/*@>b44d*/Continousspace_CSTATE/*@>1257*/[/*@>6903*/is]/*@>125b*/ = /*@>6902*/0.0;
+/*@>b38e*/    for (/*@>b386*/ci/*@>b385*/ = /*@>b389*/ir/*@>b388*/[/*@>b38b*/is]; /*@>b377*/ci/*@>b375*/ < /*@>b37a*/ir/*@>b379*/[/*@>b37d*/is/*@>b37b*/ + /*@>b37e*/1]; /*@>b380*/ci/*@>b3a5*/++) {
+        /*@>a3ed*/_rtXdot->/*@>b453*/Continousspace_CSTATE/*@>4d87*/[/*@>6936*/is]/*@>b3a7*/ += /*@>a370*/rtConstP./*@>b444*/Continousspace_A/*@>9ce0*/[/*@>9cdd*/ci]/*@>6a5e*/ * /*@>a399*/rtX./*@>b44a*/Continousspace_CSTATE/*@>9cf0*/[/*@>9ceb*/jc/*@>9cea*/[/*@>9ced*/ci]];
+    }
+}
+/*@>57ea*/for (/*@>b32d*/is = /*@>6956*/0; /*@>b335*/is < /*@>6957*/12; /*@>b332*/is/*@>b3a4*/++) {
+/*@>b352*/    for (/*@>b34a*/ci/*@>b349*/ = /*@>b34d*/ir_0/*@>b34c*/[/*@>b34f*/is]; /*@>b33b*/ci/*@>b339*/ < /*@>b33e*/ir_0/*@>b33d*/[/*@>b341*/is/*@>b33f*/ + /*@>b342*/1]; /*@>b344*/ci/*@>b3a6*/++) {
+        /*@>a402*/_rtXdot->/*@>b459*/Continousspace_CSTATE/*@>4e68*/[/*@>6954*/is]/*@>b3a8*/ += /*@>a376*/rtConstP./*@>b447*/Continousspace_B/*@>9d0a*/[/*@>9d07*/ci]/*@>6a62*/ * /*@>a54b*/rtDW./*@>b462*/FromWorkspace/*@>9d10*/[/*@>9d0d*/ci];
+    }
+    /* {S!d18}Derivatives for Integrator: '<Root>/Integrator' */
+    /*@>a3fb*/_rtXdot->/*@>b456*/Integrator_CSTATE/*@>4dd9*/[/*@>6941*/is]/*@>40a3*/ = /*@>a545*/rtDW./*@>b45f*/Nonlinearsystem/*@>9d04*/[/*@>9d01*/is];
+}
+/* {E!d20}End of Derivatives for StateSpace: '<Root>/Continous space' */
+
+/* {S!d22}Derivatives for Integrator: '<Root>/Integrator1' */
+/*@>a3e6*/_rtXdot->/*@>b450*/Integrator1_CSTATE/*@>1310*/ = /*@>a53f*/rtDW./*@>b45c*/FromWorkspace/*@>9ccc*/[/*@>9cc9*/3];
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedDerivativeLocalVars", localVarDecl)>
+%endfunction
+%function DerivativesFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Derivatives(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 2, fcnProtoType)>
+%endfunction

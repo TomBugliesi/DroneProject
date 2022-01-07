@@ -1,0 +1,152 @@
+%implements s0_b0_mesh_TLCInterface "C"
+
+%function getOutputAddr_0_0_0_0_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&rtDW.FromWorkspace" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getOutput_0_0_0_0_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "rtDW.FromWorkspace" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getDWorkAddr_0_0_0_0_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&rtDW.FromWorkspace_IWORK"
+%endfunction
+
+%function getDWork_0_0_0_0_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "rtDW.FromWorkspace_IWORK"
+%endfunction
+
+%function getDWorkAddr_0_0_0_0_0_1_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&rtDW.FromWorkspace_PWORK" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getDWork_0_0_0_0_0_1_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "rtDW.FromWorkspace_PWORK" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInputAddr_0_1_0_0_1_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@>ae8d*/rtb_Integrator_0" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInput_0_1_0_0_1_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>aea1*/rtb_Integrator_0" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInputAddr_0_1_0_0_1_0_1(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<aebc*//*@>aeb6*/rtDW./*@>aec2*/FromWorkspace" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInput_0_1_0_0_1_0_1(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>aed2*/rtDW./*@>aedf*/FromWorkspace" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInputAddr_0_1_0_0_1_0_2(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<aeef*//*@>aeeb*/rtb_Integrator1"
+%endfunction
+
+%function getInput_0_1_0_0_1_0_2(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>af00*/rtb_Integrator1"
+%endfunction
+
+%function getInputAddr_0_1_0_0_1_0_3(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<af17*//*@>af13*/rtb_Derivative" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInput_0_1_0_0_1_0_3(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>af28*/rtb_Derivative" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInputAddr_0_1_0_0_1_0_4(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<af43*//*@>af3d*/rtDW./*@>af49*/FromWorkspace" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInput_0_1_0_0_1_0_4(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>af59*/rtDW./*@>af66*/FromWorkspace" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getOutputAddr_0_1_0_0_1_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<af7a*//*@>af74*/rtDW./*@>af80*/Nonlinearsystem" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getOutput_0_1_0_0_1_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>af90*/rtDW./*@>af9d*/Nonlinearsystem" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getOutputAddr_0_0_0_4_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&rtDW.FromWorkspace" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getOutput_0_0_0_4_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "rtDW.FromWorkspace" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getDWorkAddr_0_0_0_4_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&rtDW.FromWorkspace_IWORK"
+%endfunction
+
+%function getDWork_0_0_0_4_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "rtDW.FromWorkspace_IWORK"
+%endfunction
+
+%function getDWorkAddr_0_0_0_4_0_1_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&rtDW.FromWorkspace_PWORK" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getDWork_0_0_0_4_0_1_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "rtDW.FromWorkspace_PWORK" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getOutputAddr_0_0_0_5_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&rtDW.FromWorkspace" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getOutput_0_0_0_5_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "rtDW.FromWorkspace" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getDWorkAddr_0_0_0_5_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&rtDW.FromWorkspace_IWORK"
+%endfunction
+
+%function getDWork_0_0_0_5_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "rtDW.FromWorkspace_IWORK"
+%endfunction
+
+%function getDWorkAddr_0_0_0_5_0_1_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&rtDW.FromWorkspace_PWORK" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getDWork_0_0_0_5_0_1_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "rtDW.FromWorkspace_PWORK" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+

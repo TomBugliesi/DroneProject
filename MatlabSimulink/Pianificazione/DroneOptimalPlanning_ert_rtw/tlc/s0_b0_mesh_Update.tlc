@@ -1,0 +1,40 @@
+%implements s0_b0_mesh_Update "C"
+
+%function Update(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+real_T (*lastU)[3];
+%closefile localVarDecl
+/* {S!d16}Update for Derivative: '<Root>/Derivative' */
+/*@>123a*/if (/*@>a4e5*/rtDW./*@>b2de*/TimeStampA/*@>120d*/ == /*@>68bb*/%<LibGetMathConstant(LibRealNonFinite("inf"), FcnGetDataTypeIdFromName("double"))>) {
+    /*@>a4f1*/rtDW./*@>b2e4*/TimeStampA/*@>120f*/ = %<SLibCG_DumpSSCode("/*@[ac83*/",(SLibCG_SE(LibGetT())),"/*@]*/")>;
+    /*@>68be*/lastU/*@>1212*/ = &/*@>a509*/rtDW./*@>b2f0*/LastUAtTimeA;
+} else /*@>1238*/if (/*@>a4eb*/rtDW./*@>b2e1*/TimeStampB/*@>1216*/ == /*@>68c0*/%<LibGetMathConstant(LibRealNonFinite("inf"), FcnGetDataTypeIdFromName("double"))>) {
+    /*@>a503*/rtDW./*@>b2ed*/TimeStampB/*@>121a*/ = %<SLibCG_DumpSSCode("/*@[ac80*/",(SLibCG_SE(LibGetT())),"/*@]*/")>;
+    /*@>68c4*/lastU/*@>121d*/ = &/*@>a51b*/rtDW./*@>b2f9*/LastUAtTimeB;
+} else /*@>1236*/if (/*@>a4f7*/rtDW./*@>b2e7*/TimeStampA/*@>1223*/ < /*@>a4fd*/rtDW./*@>b2ea*/TimeStampB) {
+    /*@>a515*/rtDW./*@>b2f6*/TimeStampA/*@>1227*/ = %<SLibCG_DumpSSCode("/*@[ac7d*/",(SLibCG_SE(LibGetT())),"/*@]*/")>;
+    /*@>68cf*/lastU/*@>122b*/ = &/*@>a527*/rtDW./*@>b2ff*/LastUAtTimeA;
+} else {
+    /*@>a50f*/rtDW./*@>b2f3*/TimeStampB/*@>1230*/ = %<SLibCG_DumpSSCode("/*@[ac7a*/",(SLibCG_SE(LibGetT())),"/*@]*/")>;
+    /*@>68d6*/lastU/*@>1234*/ = &/*@>a521*/rtDW./*@>b2fc*/LastUAtTimeB;
+}
+(*/*@>68d8*/lastU)/*@>6296*/[/*@>68df*/0]/*@>6295*/ = /*@>a52d*/rtDW./*@>b302*/FromWorkspace/*@>9cb7*/[/*@>9cb4*/0];
+(*/*@>68e1*/lastU)/*@>62aa*/[/*@>68e8*/1]/*@>62a9*/ = /*@>a533*/rtDW./*@>b305*/FromWorkspace/*@>9cbc*/[/*@>9cb9*/1];
+(*/*@>68ea*/lastU)/*@>62be*/[/*@>68f1*/2]/*@>62bd*/ = /*@>a539*/rtDW./*@>b308*/FromWorkspace/*@>9cc1*/[/*@>9cbe*/2];
+/* {E!d16}End of Update for Derivative: '<Root>/Derivative' */
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedUpdateLocalVars", localVarDecl)>
+%endfunction
+%function UpdateFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Update(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 1, fcnProtoType)>
+%endfunction

@@ -1,0 +1,72 @@
+%implements s0_b0_mesh_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+real_T rtb_Derivative[3];
+real_T (*lastU)[3];
+real_T lastTime;
+real_T rtb_Integrator1;
+real_T *rtb_Integrator_0;
+%closefile localVarDecl
+%assign tlcOutputsFcnOfS0B0 = OpaqueTLCBlockFcn("Outputs", 0, 0, 0, 0, 0)
+%assign tlcOutputsFcnOfS0B1 = OpaqueTLCBlockFcn("Outputs", 0, 1, 0, 0, 1)
+/* {S!d2}Integrator: '<Root>/Integrator' */
+rtb_Integrator_0/*@>973a*/ = &/*@>a38d*/rtX./*@>b1cd*/Integrator_CSTATE/*@>9737*/[/*@>9739*/0];
+if (%<(SLibCGIRIsSampleHit(1, 0))>) {
+%if !WHITE_SPACE(tlcOutputsFcnOfS0B0)
+    /* {S!d4}FromWorkspace: '<Root>/From Workspace' */
+%<tlcOutputsFcnOfS0B0>\
+%endif
+}
+/* {S!d10}Derivative: '<Root>/Derivative' */
+/*@>683e*/rtb_Integrator1/*@>3453*/ = %<SLibCG_DumpSSCode("/*@[ac61*/",(SLibCG_SE(LibGetT())),"/*@]*/")>;
+/*@>11e4*/if ((/*@>a479*/rtDW./*@>b1d3*/TimeStampA/*@>119b*/ >= /*@>6840*/rtb_Integrator1)/*@>119c*/ && (/*@>a47f*/rtDW./*@>b1d6*/TimeStampB/*@>1198*/ >= rtb_Integrator1)) {
+    /* {S!d6}Derivative: '<Root>/Derivative' */
+    /*@>6857*/rtb_Derivative/*@>6203*/[/*@>685d*/0]/*@>6202*/ = /*@>6859*/0.0;
+    /*@>685e*/rtb_Derivative/*@>6211*/[/*@>6864*/1]/*@>6210*/ = /*@>6860*/0.0;
+    /*@>6865*/rtb_Derivative/*@>621f*/[/*@>686b*/2]/*@>621e*/ = /*@>6867*/0.0;
+} else {
+    /*@>681b*/lastTime/*@>11a5*/ = /*@>a485*/rtDW./*@>b1d9*/TimeStampA;
+    /*@>681d*/lastU/*@>11a8*/ = &/*@>a48b*/rtDW./*@>b1dc*/LastUAtTimeA;
+    /*@>11ce*/if (/*@>a491*/rtDW./*@>b1df*/TimeStampA/*@>11ae*/ < /*@>a497*/rtDW./*@>b1e2*/TimeStampB) {
+        /*@>11bc*/if (/*@>a4a3*/rtDW./*@>b1e8*/TimeStampB/*@>11b3*/ < rtb_Integrator1) {
+            /*@>6827*/lastTime/*@>11b7*/ = /*@>a4af*/rtDW./*@>b1ee*/TimeStampB;
+            /*@>6829*/lastU/*@>11ba*/ = &/*@>a4bb*/rtDW./*@>b1f4*/LastUAtTimeB;
+        }
+    } else {
+        /*@>11cc*/if (/*@>a49d*/rtDW./*@>b1e5*/TimeStampA/*@>11c2*/ >= rtb_Integrator1) {
+            /*@>682f*/lastTime/*@>11c6*/ = /*@>a4a9*/rtDW./*@>b1eb*/TimeStampB;
+            /*@>6833*/lastU/*@>11ca*/ = &/*@>a4b5*/rtDW./*@>b1f1*/LastUAtTimeB;
+        }
+    }
+    /*@>6837*/rtb_Integrator1/*@>b12b*/ -= /*@>6835*/lastTime;
+    /* {S!d8}Derivative: '<Root>/Derivative' */
+    /*@>686f*/rtb_Derivative/*@>6233*/[/*@>687a*/0]/*@>6232*/ = (/*@>a4d3*/rtDW./*@>b1f7*/FromWorkspace/*@>9c96*/[/*@>9c93*/0]/*@>6238*/ - (*/*@>9c9a*/lastU)/*@>9c9c*/[/*@>9c98*/0])/*@>6a5a*/ / /*@>6875*/rtb_Integrator1;
+    /*@>687d*/rtb_Derivative/*@>6251*/[/*@>6888*/1]/*@>6250*/ = (/*@>a4d9*/rtDW./*@>b1fa*/FromWorkspace/*@>9ca1*/[/*@>9c9e*/1]/*@>6256*/ - (*/*@>9ca5*/lastU)/*@>9ca7*/[/*@>9ca3*/1])/*@>6a56*/ / /*@>6883*/rtb_Integrator1;
+    /*@>688b*/rtb_Derivative/*@>626f*/[/*@>6896*/2]/*@>626e*/ = (/*@>a4df*/rtDW./*@>b1fd*/FromWorkspace/*@>9cac*/[/*@>9ca9*/2]/*@>6274*/ - (*/*@>9cb0*/lastU)/*@>9cb2*/[/*@>9cae*/2])/*@>6a51*/ / /*@>6891*/rtb_Integrator1;
+}
+/* {E!d10}End of Derivative: '<Root>/Derivative' */
+
+/* {S!d12}Integrator: '<Root>/Integrator1' */
+/*@>683b*/rtb_Integrator1/*@>11f5*/ = /*@>a393*/rtX./*@>b1d0*/Integrator1_CSTATE;
+%if !WHITE_SPACE(tlcOutputsFcnOfS0B1)
+/* {S!d14}MATLABFcn: '<Root>/Non linear system' */
+%<SLibCG_DumpSSCode("/*@[ac6a*/",tlcOutputsFcnOfS0B1,"/*@]*/")>\
+%endif
+%<SLibInsertSolverResetCode()>\
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Outputs(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 0, fcnProtoType)>
+%endfunction
