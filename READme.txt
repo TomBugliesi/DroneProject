@@ -1,1 +1,1 @@
-In this folder all the codes written for the drone project will be uploaded
+In this repository all the coding for this project will be uploaded
