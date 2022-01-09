@@ -4,7 +4,7 @@ clc %mostrare nella command window solo gli elementi del presente script
 
 %%  Soluzione LQR z,zp
 Q_z = [100,0;0,1]*eye(2)*C_z'*C_z
-R_z = 1;
+R_z = 0.1;
 
 [K_lqr_z,S_lqr_z,p_lqr_z] = lqr(sys_z,Q_z,R_z)
 
@@ -21,7 +21,7 @@ G0_fb_lqr_z = dcgain(reg_fb_lqr_z);
 
 %%  Soluzione LQR R e P
 Q_R = C_R'*C_R
-R_R = 1;
+R_R = 0.1;
 
 [K_lqr_R,S_lq0r_R,p_lqr_R] = lqr(A_R,B_R,Q_R,R_R)
 
@@ -38,7 +38,7 @@ G0_fb_lqr_R = dcgain(reg_fb_lqr_R);
 
 %%  Soluzione LQR Y
 Q_Y = 1*C_Y'*C_Y
-R_Y = 1;
+R_Y = 0.5;
 
 [K_lqr_Y,S_lq0r_Y,p_lqr_Y] = lqr(A_Y,B_Y,Q_Y,R_Y)
 
