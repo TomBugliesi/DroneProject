@@ -18,10 +18,10 @@ x1th3 = X(14);
 th3p = 0;
 input1 = eval(input1);
 input2 = eval(input2);
-H = 0; %input2(1)
-R = 0; %input2(2)
-P = 0; %input2(3)
-Y = 0; %input2(4);
+H = input2(1);
+R = input2(2);
+P = input2(3);
+Y = input2(4);
 %% Parametri
 [ms, t, l, Jm, k, J11, J12, J13, J22, J23, J33, g] = params_drone;
 
@@ -37,15 +37,15 @@ Y = 0; %input2(4);
     % validi per th3 che variano in un intorno limitato, che tuttavia sono
     % delle ipotesi di per sé non soddisfacenti nei casi reali. 
 
-Xp(1) = 0; %zp- input1(1)
-Xp(2) = (H*cos(th1)*cos(th2) - g*ms + g*ms*cos(th1)*cos(th2))/ms-H/ms; %-input1(2)
+Xp(1) = zp- input1(1);
+Xp(2) = (H*cos(th1)*cos(th2) - g*ms + g*ms*cos(th1)*cos(th2))/ms-H/ms-input1(2);
 Xp(3) = 0;
 Xp(4) = 0;
-Xp(5) = 0; %th1p-input1(5)
+Xp(5) = th1p; %-input1(5)
 Xp(6) = +(J11^2*th2p*th3p - J11^2*th2p*th3p*cos(th3)^2 + J22^2*th2p*th3p*cos(th3)^2 + J22*R*t*cos(th3) - J11*P*l*sin(th3) + J11^2*th1p*th2p*sin(th2) - J11*J22*th2p*th3p - J11*J33*th2p*th3p - J11^2*th1p*th2p*cos(th3)^2*sin(th2) + J22^2*th1p*th2p*cos(th3)^2*sin(th2) + J11*J33*th2p*th3p*cos(th3)^2 - J22*J33*th2p*th3p*cos(th3)^2 + J11*J22*th1p*th2p*sin(th2) - J11*J33*th1p*th2p*sin(th2) + J11^2*th1p^2*cos(th2)*cos(th3)*sin(th2)*sin(th3) - J22^2*th1p^2*cos(th2)*cos(th3)*sin(th2)*sin(th3) + J11^2*th1p*th3p*cos(th2)*cos(th3)*sin(th3) - J22^2*th1p*th3p*cos(th2)*cos(th3)*sin(th3) + J11*J33*th1p*th2p*cos(th3)^2*sin(th2) - J22*J33*th1p*th2p*cos(th3)^2*sin(th2) - J11*J33*th1p^2*cos(th2)*cos(th3)*sin(th2)*sin(th3) + J22*J33*th1p^2*cos(th2)*cos(th3)*sin(th2)*sin(th3) - J11*J33*th1p*th3p*cos(th2)*cos(th3)*sin(th3) + J22*J33*th1p*th3p*cos(th2)*cos(th3)*sin(th3))/(J11*J22*cos(th2))-(R*t)/J11; %-input1(6)
 Xp(7) = 0;
 Xp(8) = 0;
-Xp(9) = 0; %th2p-input1(9)
+Xp(9) = th2p-input1(9);
 Xp(10) = +(J22*J33*th1p^2*sin(2*th2) - J22^2*th1p^2*sin(2*th2) - J11^2*th2p*th3p*sin(2*th3) + J22^2*th2p*th3p*sin(2*th3) + 2*J11*P*l*cos(th3) + 2*J22*R*t*sin(th3) - 2*J22^2*th1p*th3p*cos(th2) - 2*J11^2*th1p*th3p*cos(th2)*cos(th3)^2 + 2*J22^2*th1p*th3p*cos(th2)*cos(th3)^2 + J11*J33*th2p*th3p*sin(2*th3) - J22*J33*th2p*th3p*sin(2*th3) + 2*J11*J22*th1p*th3p*cos(th2) + 2*J22*J33*th1p*th3p*cos(th2) - 2*J11^2*th1p^2*cos(th2)*cos(th3)^2*sin(th2) + 2*J22^2*th1p^2*cos(th2)*cos(th3)^2*sin(th2) - 2*J11^2*th1p*th2p*cos(th3)*sin(th2)*sin(th3) + 2*J22^2*th1p*th2p*cos(th3)*sin(th2)*sin(th3) + 2*J11*J33*th1p^2*cos(th2)*cos(th3)^2*sin(th2) - 2*J22*J33*th1p^2*cos(th2)*cos(th3)^2*sin(th2) + 2*J11*J33*th1p*th3p*cos(th2)*cos(th3)^2 - 2*J22*J33*th1p*th3p*cos(th2)*cos(th3)^2 + 2*J11*J33*th1p*th2p*cos(th3)*sin(th2)*sin(th3) - 2*J22*J33*th1p*th2p*cos(th3)*sin(th2)*sin(th3))/(2*J11*J22)-(P*l)/J22; %-input1(10)
 Xp(11) = 0;
 Xp(12) = 0;

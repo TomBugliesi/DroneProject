@@ -1,0 +1,391 @@
+%implements s1_b0_5hts_Outputs "C"
+
+%function Outputs(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+NeslSimulationData *simulationData;
+NeuDiagnosticManager *diagnosticManager;
+NeuDiagnosticTree *diagnosticTree;
+char *msg;
+int32_T tmp_0;
+int16_T i;
+uint8_T status;
+boolean_T tmp;
+%closefile localVarDecl
+%assign tlcOutputsFcnOfS1B8 = OpaqueTLCBlockFcn("Outputs", 1, 8, 0, 0, 0)
+/* {S!d2}DiscreteIntegrator: '<Root>/Discrete-Time Integrator' */
+/*@>77a4f*/memcpy(&/*@>7b219*/DinamicaNonLineare_Controllo_B./*@>7e060*/DiscreteTimeIntegrator/*@>749cf*/[/*@>749be*/0], &/*@>7b982*/DinamicaNonLineare_Controllo_DW./*@>7e2a6*/DiscreteTimeIntegrator_DSTATE/*@>749d7*/[/*@>749cb*/0], /*@>749cd*/12U/*@>749da*/ * /*@>749d9*/sizeof(real_T));
+/* {S!d4}SimscapeInputBlock: '<S222>/INPUT_1_1_1' */
+/*@>7b21f*/DinamicaNonLineare_Controllo_B./*@>7e063*/INPUT_1_1_1/*@>6afa3*/[/*@>6f0a2*/0]/*@>5b3c7*/ = /*@>7b225*/DinamicaNonLineare_Controllo_B./*@>7e066*/DiscreteTimeIntegrator/*@>79aea*/[/*@>79ae7*/6];
+/*@>7b22b*/DinamicaNonLineare_Controllo_B./*@>7e069*/INPUT_1_1_1/*@>5b3cd*/[/*@>6ef6f*/1]/*@>5b3d0*/ = /*@>6f16b*/0.0;
+/*@>7b231*/DinamicaNonLineare_Controllo_B./*@>7e06c*/INPUT_1_1_1/*@>5b3d6*/[/*@>6ef6e*/2]/*@>5b3d9*/ = /*@>6f16c*/0.0;
+/*@>5b3fd*/if (%<SLibCG_DumpSSCode("/*@[7d4c4*/",(LibIsMajorTimeStep()),"/*@]*/")>) {
+    /*@>7b988*/DinamicaNonLineare_Controllo_DW./*@>7e2a9*/INPUT_1_1_1_Discrete/*@>6b028*/[/*@>6f0b3*/0]/*@>5b3ea*/ = !(/*@>7b237*/DinamicaNonLineare_Controllo_B./*@>7e06f*/INPUT_1_1_1/*@>79aef*/[/*@>79aec*/0]/*@>63ea2*/ == /*@>7b98e*/DinamicaNonLineare_Controllo_DW./*@>7e2ac*/INPUT_1_1_1_Discrete/*@>79af4*/[/*@>79af1*/1]);
+    /*@>7b99a*/DinamicaNonLineare_Controllo_DW./*@>7e2b2*/INPUT_1_1_1_Discrete/*@>6b08c*/[/*@>6f0bf*/1]/*@>5b3fb*/ = /*@>7b243*/DinamicaNonLineare_Controllo_B./*@>7e075*/INPUT_1_1_1/*@>79afe*/[/*@>79afb*/0];
+}
+/*@>7b23d*/DinamicaNonLineare_Controllo_B./*@>7e072*/INPUT_1_1_1/*@>6b05a*/[/*@>6f0b9*/0]/*@>5b406*/ = /*@>7b994*/DinamicaNonLineare_Controllo_DW./*@>7e2af*/INPUT_1_1_1_Discrete/*@>79af9*/[/*@>79af6*/1];
+/*@>7b249*/DinamicaNonLineare_Controllo_B./*@>7e078*/INPUT_1_1_1/*@>6b0be*/[/*@>6f0c5*/3]/*@>5b40f*/ = /*@>7b9a0*/DinamicaNonLineare_Controllo_DW./*@>7e2b5*/INPUT_1_1_1_Discrete/*@>79b03*/[/*@>79b00*/0];
+/* {E!d4}End of SimscapeInputBlock: '<S222>/INPUT_1_1_1' */
+
+/* {S!d6}SimscapeInputBlock: '<S222>/INPUT_2_1_1' */
+/*@>7b24f*/DinamicaNonLineare_Controllo_B./*@>7e07b*/INPUT_2_1_1/*@>6b0f0*/[/*@>6f0cb*/0]/*@>5b425*/ = /*@>7b255*/DinamicaNonLineare_Controllo_B./*@>7e07e*/DiscreteTimeIntegrator/*@>79b08*/[/*@>79b05*/7];
+/*@>7b25b*/DinamicaNonLineare_Controllo_B./*@>7e081*/INPUT_2_1_1/*@>5b42b*/[/*@>6ef6c*/1]/*@>5b42e*/ = /*@>6f16d*/0.0;
+/*@>7b261*/DinamicaNonLineare_Controllo_B./*@>7e084*/INPUT_2_1_1/*@>5b434*/[/*@>6ef6b*/2]/*@>5b437*/ = /*@>6f16e*/0.0;
+/*@>5b45b*/if (%<SLibCG_DumpSSCode("/*@[7d4c7*/",(LibIsMajorTimeStep()),"/*@]*/")>) {
+    /*@>7b9a6*/DinamicaNonLineare_Controllo_DW./*@>7e2b8*/INPUT_2_1_1_Discrete/*@>6b141*/[/*@>6f0d4*/0]/*@>5b448*/ = !(/*@>7b267*/DinamicaNonLineare_Controllo_B./*@>7e087*/INPUT_2_1_1/*@>79b0d*/[/*@>79b0a*/0]/*@>63ebb*/ == /*@>7b9ac*/DinamicaNonLineare_Controllo_DW./*@>7e2bb*/INPUT_2_1_1_Discrete/*@>79b12*/[/*@>79b0f*/1]);
+    /*@>7b9b8*/DinamicaNonLineare_Controllo_DW./*@>7e2c1*/INPUT_2_1_1_Discrete/*@>6b1a5*/[/*@>6f0e0*/1]/*@>5b459*/ = /*@>7b273*/DinamicaNonLineare_Controllo_B./*@>7e08d*/INPUT_2_1_1/*@>79b1c*/[/*@>79b19*/0];
+}
+/*@>7b26d*/DinamicaNonLineare_Controllo_B./*@>7e08a*/INPUT_2_1_1/*@>6b173*/[/*@>6f0da*/0]/*@>5b464*/ = /*@>7b9b2*/DinamicaNonLineare_Controllo_DW./*@>7e2be*/INPUT_2_1_1_Discrete/*@>79b17*/[/*@>79b14*/1];
+/*@>7b279*/DinamicaNonLineare_Controllo_B./*@>7e090*/INPUT_2_1_1/*@>6b1d7*/[/*@>6f0e6*/3]/*@>5b46d*/ = /*@>7b9be*/DinamicaNonLineare_Controllo_DW./*@>7e2c4*/INPUT_2_1_1_Discrete/*@>79b21*/[/*@>79b1e*/0];
+/* {E!d6}End of SimscapeInputBlock: '<S222>/INPUT_2_1_1' */
+
+/* {S!d8}SimscapeInputBlock: '<S222>/INPUT_3_1_1' */
+/*@>7b27f*/DinamicaNonLineare_Controllo_B./*@>7e093*/INPUT_3_1_1/*@>6b209*/[/*@>6f0ec*/0]/*@>5b483*/ = /*@>7b285*/DinamicaNonLineare_Controllo_B./*@>7e096*/DiscreteTimeIntegrator/*@>79b26*/[/*@>79b23*/8];
+/*@>7b28b*/DinamicaNonLineare_Controllo_B./*@>7e099*/INPUT_3_1_1/*@>5b489*/[/*@>6ef69*/1]/*@>5b48c*/ = /*@>6f16f*/0.0;
+/*@>7b291*/DinamicaNonLineare_Controllo_B./*@>7e09c*/INPUT_3_1_1/*@>5b492*/[/*@>6ef68*/2]/*@>5b495*/ = /*@>6f170*/0.0;
+/*@>5b4b9*/if (%<SLibCG_DumpSSCode("/*@[7d4ca*/",(LibIsMajorTimeStep()),"/*@]*/")>) {
+    /*@>7b9c4*/DinamicaNonLineare_Controllo_DW./*@>7e2c7*/INPUT_3_1_1_Discrete/*@>6b25a*/[/*@>6f0f5*/0]/*@>5b4a6*/ = !(/*@>7b297*/DinamicaNonLineare_Controllo_B./*@>7e09f*/INPUT_3_1_1/*@>79b2b*/[/*@>79b28*/0]/*@>63ed4*/ == /*@>7b9ca*/DinamicaNonLineare_Controllo_DW./*@>7e2ca*/INPUT_3_1_1_Discrete/*@>79b30*/[/*@>79b2d*/1]);
+    /*@>7b9d6*/DinamicaNonLineare_Controllo_DW./*@>7e2d0*/INPUT_3_1_1_Discrete/*@>6b2be*/[/*@>6f101*/1]/*@>5b4b7*/ = /*@>7b2a3*/DinamicaNonLineare_Controllo_B./*@>7e0a5*/INPUT_3_1_1/*@>79b3a*/[/*@>79b37*/0];
+}
+/*@>7b29d*/DinamicaNonLineare_Controllo_B./*@>7e0a2*/INPUT_3_1_1/*@>6b28c*/[/*@>6f0fb*/0]/*@>5b4c2*/ = /*@>7b9d0*/DinamicaNonLineare_Controllo_DW./*@>7e2cd*/INPUT_3_1_1_Discrete/*@>79b35*/[/*@>79b32*/1];
+/*@>7b2a9*/DinamicaNonLineare_Controllo_B./*@>7e0a8*/INPUT_3_1_1/*@>6b2f0*/[/*@>6f107*/3]/*@>5b4cb*/ = /*@>7b9dc*/DinamicaNonLineare_Controllo_DW./*@>7e2d3*/INPUT_3_1_1_Discrete/*@>79b3f*/[/*@>79b3c*/0];
+/* {E!d8}End of SimscapeInputBlock: '<S222>/INPUT_3_1_1' */
+
+/* {S!d10}MATLABSystem: '<Root>/I2C Read' */
+/*@>5b869*/if (/*@>7b9e2*/DinamicaNonLineare_Controllo_DW./*@>7e2d6*/obj.SampleTime/*@>5b863*/ != /*@>7b7ab*/DinamicaNonLineare_Controllo_P./*@>7e210*/I2CRead_SampleTime) {
+    /*@>7b9e8*/DinamicaNonLineare_Controllo_DW./*@>7e2d9*/obj./*@>7dfd6*/SampleTime/*@>5b898*/ = /*@>7b7b1*/DinamicaNonLineare_Controllo_P./*@>7e213*/I2CRead_SampleTime;
+}
+/*@>6ee8f*/status/*@>5bae7*/ = /*@>7d9e0*/0U;
+/*@>6ee87*/status/*@>5bbba*/ = /*@>77a57*/MW_I2C_MasterWrite(/*@>7b9ee*/DinamicaNonLineare_Controllo_DW./*@>7e2dc*/obj.I2CDriverObj.MW_I2C_HANDLE, /*@>704b6*/8UL, &/*@>6ee54*/status, /*@>704b9*/1UL, /*@>6ee4a*/true, /*@>6ee49*/false);
+/*@>5ba72*/if (/*@>6f029*/0/*@>5ba6c*/ == /*@>6ee52*/status) {
+    /*@>77a59*/MW_I2C_MasterRead(/*@>7b9f4*/DinamicaNonLineare_Controllo_DW./*@>7e2df*/obj.I2CDriverObj.MW_I2C_HANDLE, /*@>704ce*/8UL, &/*@>7b2c1*/DinamicaNonLineare_Controllo_B./*@>7e0ab*/output_raw/*@>5bbf9*/[/*@>6ee7e*/0], /*@>704d1*/10UL, /*@>6ee47*/false, /*@>6ee46*/true);
+    /*@>77a5b*/memcpy(/*@>5bc0f*/(void *)&/*@>7b2c7*/DinamicaNonLineare_Controllo_B./*@>7e0ae*/output/*@>5bc0d*/[/*@>6ee7d*/0], /*@>5bc12*/(void *)&/*@>7b2cd*/DinamicaNonLineare_Controllo_B./*@>7e0b1*/output_raw/*@>5bc10*/[/*@>6ee7c*/0], /*@>75d79*/(uint16_T)(/*@>5bc16*/(size_t)/*@>6ee7b*/10/*@>5bc15*/ * /*@>5bc13*/sizeof(uint8_T)));
+} else {
+/*@>69dc9*/    for (/*@>7da19*/i = /*@>6f077*/0; /*@>7da21*/i < /*@>6f075*/10; /*@>7da1e*/i/*@>7da25*/++) {
+        /*@>7b2d3*/DinamicaNonLineare_Controllo_B./*@>7e0b4*/output/*@>69dc0*/[/*@>6f071*/i]/*@>69dbf*/ = /*@>7d9e3*/0U;
+    }
+}
+/* {S!d12}Sum: '<Root>/Sum' incorporates:
+ *  Constant: '<Root>/Constant4'
+ */
+/*@>7b2d9*/DinamicaNonLineare_Controllo_B./*@>7e0b7*/Sum/*@>5c6c8*/ = /*@>7b7b7*/DinamicaNonLineare_Controllo_P./*@>7e216*/Constant4_Value/*@>5c6c5*/ - /*@>7b2df*/DinamicaNonLineare_Controllo_B./*@>7e0ba*/DiscreteTimeIntegrator/*@>79b44*/[/*@>79b41*/2];
+/* {S!d14}Sum: '<Root>/Sum4' incorporates:
+ *  Gain: '<S36>/Derivative Gain'
+ */
+/*@>7b2e5*/DinamicaNonLineare_Controllo_B./*@>7e0bd*/rtb_Sum4_f/*@>585b1*/ = /*@>7b7bd*/DinamicaNonLineare_Controllo_P./*@>7e219*/PIDController_D/*@>6f6e1*/ * /*@>7b2eb*/DinamicaNonLineare_Controllo_B./*@>7e0c0*/Sum;
+/* {S!d16}SampleTimeMath: '<S39>/Tsamp'
+ *
+ * About '<S39>/Tsamp':
+ *  y = u * K where K = 1 / ( w * Ts )
+ */
+/*@>7b2f1*/DinamicaNonLineare_Controllo_B./*@>7e0c3*/Tsamp/*@>585b8*/ = /*@>7b2f7*/DinamicaNonLineare_Controllo_B./*@>7e0c6*/rtb_Sum4_f/*@>6f6dd*/ * /*@>7b7c3*/DinamicaNonLineare_Controllo_P./*@>7e21c*/Tsamp_WtEt;
+/* {S!d18}Sum: '<Root>/Sum4' incorporates:
+ *  Delay: '<S37>/UD'
+ *  DiscreteIntegrator: '<S44>/Integrator'
+ *  Gain: '<S49>/Proportional Gain'
+ *  Sum: '<S37>/Diff'
+ *  Sum: '<S53>/Sum'
+ */
+/*@>7b2fd*/DinamicaNonLineare_Controllo_B./*@>7e0c9*/rtb_Sum4_f/*@>5c6d3*/ = (/*@>7b7c9*/DinamicaNonLineare_Controllo_P./*@>7e21f*/PIDController_P/*@>6f6d9*/ * /*@>7b303*/DinamicaNonLineare_Controllo_B./*@>7e0cc*/Sum/*@>5c6cf*/ + /*@>7b9fa*/DinamicaNonLineare_Controllo_DW./*@>7e2e2*/Integrator_DSTATE)/*@>5c6d0*/ + (/*@>7b309*/DinamicaNonLineare_Controllo_B./*@>7e0cf*/Tsamp/*@>66193*/ - /*@>7ba00*/DinamicaNonLineare_Controllo_DW./*@>7e2e5*/UD_DSTATE);
+/* {S!d24}Saturate: '<S51>/Saturation' */
+/*@>728f7*/if (/*@>7b30f*/DinamicaNonLineare_Controllo_B./*@>7e0d2*/rtb_Sum4_f/*@>708ef*/ > /*@>7b7cf*/DinamicaNonLineare_Controllo_P./*@>7e222*/PIDController_UpperSaturationLi) {
+    /* {S!d20}Sum: '<Root>/Sum4' */
+    /*@>7b31b*/DinamicaNonLineare_Controllo_B./*@>7e0d8*/rtb_Sum4_f/*@>728fa*/ = /*@>7b7db*/DinamicaNonLineare_Controllo_P./*@>7e228*/PIDController_UpperSaturationLi;
+} else {
+    /*@>7290b*/if (/*@>7b315*/DinamicaNonLineare_Controllo_B./*@>7e0d5*/rtb_Sum4_f/*@>708ec*/ < /*@>7b7d5*/DinamicaNonLineare_Controllo_P./*@>7e225*/PIDController_LowerSaturationLi) {
+        /* {S!d22}Sum: '<Root>/Sum4' */
+        /*@>7b321*/DinamicaNonLineare_Controllo_B./*@>7e0db*/rtb_Sum4_f/*@>7290e*/ = /*@>7b7e1*/DinamicaNonLineare_Controllo_P./*@>7e22b*/PIDController_LowerSaturationLi;
+    }
+}
+/* {E!d24}End of Saturate: '<S51>/Saturation' */
+
+/* {S!d26}Sum: '<Root>/Sum4' incorporates:
+ *  Constant: '<S212>/Constant'
+ *  Constant: '<S214>/Constant'
+ *  DataTypeConversion: '<S212>/Data Type Conversion'
+ *  DataTypeConversion: '<S214>/Data Type Conversion'
+ *  Gain: '<S212>/Gain'
+ *  Gain: '<S214>/Gain'
+ *  MATLABSystem: '<Root>/I2C Read'
+ *  Sum: '<S212>/Subtract'
+ *  Sum: '<S214>/Add'
+ */
+/*@>7b327*/DinamicaNonLineare_Controllo_B./*@>7e0de*/rtb_Sum4_f/*@>7da26*/ += (/*@>7b7e7*/DinamicaNonLineare_Controllo_P./*@>7e22e*/Gain_Gain/*@>6f6d1*/ * /*@>704e6*/(real_T)/*@>7b32d*/DinamicaNonLineare_Controllo_B./*@>7e0e1*/output/*@>79b49*/[/*@>79b46*/4]/*@>6619f*/ + /*@>7b7ed*/DinamicaNonLineare_Controllo_P./*@>7e231*/Constant_Value)/*@>5c721*/ + (/*@>704e9*/(real_T)/*@>7b333*/DinamicaNonLineare_Controllo_B./*@>7e0e4*/output/*@>79b4e*/[/*@>79b4b*/3]/*@>66310*/ - /*@>7b7f3*/DinamicaNonLineare_Controllo_P./*@>7e234*/Constant_Value_o)/*@>6f6d5*/ * /*@>7b7f9*/DinamicaNonLineare_Controllo_P./*@>7e237*/Gain_Gain_j;
+/* {S!d28}SampleTimeMath: '<S1>/TSamp'
+ *
+ * About '<S1>/TSamp':
+ *  y = u * K where K = 1 / ( w * Ts )
+ */
+/*@>7b33f*/DinamicaNonLineare_Controllo_B./*@>7e0e7*/TSamp/*@>586e5*/ = /*@>7b345*/DinamicaNonLineare_Controllo_B./*@>7e0ea*/rtb_Sum4_f/*@>6f6cd*/ * /*@>7b7ff*/DinamicaNonLineare_Controllo_P./*@>7e23a*/TSamp_WtEt;
+/* {S!d30}Sum: '<S1>/Diff' incorporates:
+ *  UnitDelay: '<S1>/UD'
+ *
+ * Block description for '<S1>/Diff':
+ *  
+ *  Add in CPU
+ *
+ * Block description for '<S1>/UD':
+ *  
+ *  Store in Global RAM
+ */
+/*@>7b34b*/DinamicaNonLineare_Controllo_B./*@>7e0ed*/rtb_Diff_k_c/*@>5c72a*/ = /*@>7b351*/DinamicaNonLineare_Controllo_B./*@>7e0f0*/TSamp/*@>5c727*/ - /*@>7ba06*/DinamicaNonLineare_Controllo_DW./*@>7e2e8*/UD_DSTATE_m;
+/* {S!d32}Sum: '<Root>/Sum1' incorporates:
+ *  Constant: '<S209>/Constant'
+ *  DataTypeConversion: '<S209>/Data Type Conversion'
+ *  Gain: '<S209>/Gain'
+ *  MATLABSystem: '<Root>/I2C Read'
+ *  Sum: '<S209>/Subtract'
+ */
+/*@>7b357*/DinamicaNonLineare_Controllo_B./*@>7e0f3*/Sum1/*@>5c734*/ = (/*@>704f5*/(real_T)/*@>7b35d*/DinamicaNonLineare_Controllo_B./*@>7e0f6*/output/*@>79b53*/[/*@>79b50*/1]/*@>6631d*/ - /*@>7b805*/DinamicaNonLineare_Controllo_P./*@>7e23d*/Constant_Value_i)/*@>6f6c9*/ * /*@>7b80b*/DinamicaNonLineare_Controllo_P./*@>7e240*/Gain_Gain_a/*@>5c731*/ - /*@>7b363*/DinamicaNonLineare_Controllo_B./*@>7e0f9*/DiscreteTimeIntegrator/*@>79b58*/[/*@>79b55*/6];
+/* {S!d34}Saturate: '<S101>/Saturation' incorporates:
+ *  Gain: '<S86>/Derivative Gain'
+ */
+/*@>7b369*/DinamicaNonLineare_Controllo_B./*@>7e0fc*/rtb_Saturation_p/*@>58896*/ = /*@>7b811*/DinamicaNonLineare_Controllo_P./*@>7e243*/PIDController1_D/*@>6f6c5*/ * /*@>7b36f*/DinamicaNonLineare_Controllo_B./*@>7e0ff*/Sum1;
+/* {S!d36}SampleTimeMath: '<S89>/Tsamp'
+ *
+ * About '<S89>/Tsamp':
+ *  y = u * K where K = 1 / ( w * Ts )
+ */
+/*@>7b375*/DinamicaNonLineare_Controllo_B./*@>7e102*/Tsamp_o/*@>5889d*/ = /*@>7b37b*/DinamicaNonLineare_Controllo_B./*@>7e105*/rtb_Saturation_p/*@>6f6c1*/ * /*@>7b817*/DinamicaNonLineare_Controllo_P./*@>7e246*/Tsamp_WtEt_l;
+/* {S!d38}Saturate: '<S101>/Saturation' incorporates:
+ *  Delay: '<S87>/UD'
+ *  DiscreteIntegrator: '<S94>/Integrator'
+ *  Gain: '<S99>/Proportional Gain'
+ *  Sum: '<S103>/Sum'
+ *  Sum: '<S87>/Diff'
+ */
+/*@>7b381*/DinamicaNonLineare_Controllo_B./*@>7e108*/rtb_Saturation_p/*@>5c73f*/ = (/*@>7b81d*/DinamicaNonLineare_Controllo_P./*@>7e249*/PIDController1_P/*@>6f6bd*/ * /*@>7b387*/DinamicaNonLineare_Controllo_B./*@>7e10b*/Sum1/*@>5c73b*/ + /*@>7ba0c*/DinamicaNonLineare_Controllo_DW./*@>7e2eb*/Integrator_DSTATE_b)/*@>5c73c*/ + (/*@>7b38d*/DinamicaNonLineare_Controllo_B./*@>7e10e*/Tsamp_o/*@>661dd*/ - /*@>7ba12*/DinamicaNonLineare_Controllo_DW./*@>7e2ee*/UD_DSTATE_d);
+/* {S!d44}Saturate: '<S101>/Saturation' */
+/*@>728fc*/if (/*@>7b393*/DinamicaNonLineare_Controllo_B./*@>7e111*/rtb_Saturation_p/*@>70941*/ > /*@>7b823*/DinamicaNonLineare_Controllo_P./*@>7e24c*/PIDController1_UpperSaturationL) {
+    /* {S!d40}Saturate: '<S101>/Saturation' */
+    /*@>7b39f*/DinamicaNonLineare_Controllo_B./*@>7e117*/rtb_Saturation_p/*@>728ff*/ = /*@>7b82f*/DinamicaNonLineare_Controllo_P./*@>7e252*/PIDController1_UpperSaturationL;
+} else {
+    /*@>72910*/if (/*@>7b399*/DinamicaNonLineare_Controllo_B./*@>7e114*/rtb_Saturation_p/*@>7093e*/ < /*@>7b829*/DinamicaNonLineare_Controllo_P./*@>7e24f*/PIDController1_LowerSaturationL) {
+        /* {S!d42}Saturate: '<S101>/Saturation' */
+        /*@>7b3a5*/DinamicaNonLineare_Controllo_B./*@>7e11a*/rtb_Saturation_p/*@>72913*/ = /*@>7b835*/DinamicaNonLineare_Controllo_P./*@>7e255*/PIDController1_LowerSaturationL;
+    }
+}
+/* {E!d44}End of Saturate: '<S101>/Saturation' */
+
+/* {S!d46}SampleTimeMath: '<S2>/TSamp'
+ *
+ * About '<S2>/TSamp':
+ *  y = u * K where K = 1 / ( w * Ts )
+ */
+/*@>7b3ab*/DinamicaNonLineare_Controllo_B./*@>7e11d*/TSamp_n/*@>589b6*/ = /*@>7b3b1*/DinamicaNonLineare_Controllo_B./*@>7e120*/rtb_Saturation_p/*@>6f6b9*/ * /*@>7b83b*/DinamicaNonLineare_Controllo_P./*@>7e258*/TSamp_WtEt_c;
+/* {S!d48}Sum: '<S2>/Diff' incorporates:
+ *  UnitDelay: '<S2>/UD'
+ *
+ * Block description for '<S2>/Diff':
+ *  
+ *  Add in CPU
+ *
+ * Block description for '<S2>/UD':
+ *  
+ *  Store in Global RAM
+ */
+/*@>7b3b7*/DinamicaNonLineare_Controllo_B./*@>7e123*/rtb_Diff_m_b/*@>5c746*/ = /*@>7b3bd*/DinamicaNonLineare_Controllo_B./*@>7e126*/TSamp_n/*@>5c743*/ - /*@>7ba18*/DinamicaNonLineare_Controllo_DW./*@>7e2f1*/UD_DSTATE_a;
+/* {S!d50}Sum: '<Root>/Sum2' incorporates:
+ *  Constant: '<S210>/Constant'
+ *  DataTypeConversion: '<S210>/Data Type Conversion'
+ *  Gain: '<S210>/Gain'
+ *  MATLABSystem: '<Root>/I2C Read'
+ *  Sum: '<S210>/Subtract'
+ */
+/*@>7b3c3*/DinamicaNonLineare_Controllo_B./*@>7e129*/Sum2/*@>5c750*/ = (/*@>70511*/(real_T)/*@>7b3c9*/DinamicaNonLineare_Controllo_B./*@>7e12c*/output/*@>79b5d*/[/*@>79b5a*/0]/*@>66338*/ - /*@>7b841*/DinamicaNonLineare_Controllo_P./*@>7e25b*/Constant_Value_l)/*@>6f6b5*/ * /*@>7b847*/DinamicaNonLineare_Controllo_P./*@>7e25e*/Gain_Gain_p/*@>5c74d*/ - /*@>7b3cf*/DinamicaNonLineare_Controllo_B./*@>7e12f*/DiscreteTimeIntegrator/*@>79b62*/[/*@>79b5f*/7];
+/* {S!d52}Saturate: '<S151>/Saturation' incorporates:
+ *  Gain: '<S136>/Derivative Gain'
+ */
+/*@>7b3d5*/DinamicaNonLineare_Controllo_B./*@>7e132*/rtb_Saturation_g_c/*@>58b67*/ = /*@>7b84d*/DinamicaNonLineare_Controllo_P./*@>7e261*/PIDController2_D/*@>6f6b1*/ * /*@>7b3db*/DinamicaNonLineare_Controllo_B./*@>7e135*/Sum2;
+/* {S!d54}SampleTimeMath: '<S139>/Tsamp'
+ *
+ * About '<S139>/Tsamp':
+ *  y = u * K where K = 1 / ( w * Ts )
+ */
+/*@>7b3e1*/DinamicaNonLineare_Controllo_B./*@>7e138*/Tsamp_f/*@>58b6e*/ = /*@>7b3e7*/DinamicaNonLineare_Controllo_B./*@>7e13b*/rtb_Saturation_g_c/*@>6f6ad*/ * /*@>7b853*/DinamicaNonLineare_Controllo_P./*@>7e264*/Tsamp_WtEt_lo;
+/* {S!d56}Saturate: '<S151>/Saturation' incorporates:
+ *  Delay: '<S137>/UD'
+ *  DiscreteIntegrator: '<S144>/Integrator'
+ *  Gain: '<S149>/Proportional Gain'
+ *  Sum: '<S137>/Diff'
+ *  Sum: '<S153>/Sum'
+ */
+/*@>7b3ed*/DinamicaNonLineare_Controllo_B./*@>7e13e*/rtb_Saturation_g_c/*@>5c75b*/ = (/*@>7b859*/DinamicaNonLineare_Controllo_P./*@>7e267*/PIDController2_P/*@>6f6a9*/ * /*@>7b3f3*/DinamicaNonLineare_Controllo_B./*@>7e141*/Sum2/*@>5c757*/ + /*@>7ba1e*/DinamicaNonLineare_Controllo_DW./*@>7e2f4*/Integrator_DSTATE_c)/*@>5c758*/ + (/*@>7b3f9*/DinamicaNonLineare_Controllo_B./*@>7e144*/Tsamp_f/*@>66213*/ - /*@>7ba24*/DinamicaNonLineare_Controllo_DW./*@>7e2f7*/UD_DSTATE_n);
+/* {S!d62}Saturate: '<S151>/Saturation' */
+/*@>72901*/if (/*@>7b3ff*/DinamicaNonLineare_Controllo_B./*@>7e147*/rtb_Saturation_g_c/*@>70993*/ > /*@>7b85f*/DinamicaNonLineare_Controllo_P./*@>7e26a*/PIDController2_UpperSaturationL) {
+    /* {S!d58}Saturate: '<S151>/Saturation' */
+    /*@>7b40b*/DinamicaNonLineare_Controllo_B./*@>7e14d*/rtb_Saturation_g_c/*@>72904*/ = /*@>7b86b*/DinamicaNonLineare_Controllo_P./*@>7e270*/PIDController2_UpperSaturationL;
+} else {
+    /*@>72915*/if (/*@>7b405*/DinamicaNonLineare_Controllo_B./*@>7e14a*/rtb_Saturation_g_c/*@>70990*/ < /*@>7b865*/DinamicaNonLineare_Controllo_P./*@>7e26d*/PIDController2_LowerSaturationL) {
+        /* {S!d60}Saturate: '<S151>/Saturation' */
+        /*@>7b411*/DinamicaNonLineare_Controllo_B./*@>7e150*/rtb_Saturation_g_c/*@>72918*/ = /*@>7b871*/DinamicaNonLineare_Controllo_P./*@>7e273*/PIDController2_LowerSaturationL;
+    }
+}
+/* {E!d62}End of Saturate: '<S151>/Saturation' */
+
+/* {S!d64}SampleTimeMath: '<S3>/TSamp'
+ *
+ * About '<S3>/TSamp':
+ *  y = u * K where K = 1 / ( w * Ts )
+ */
+/*@>7b417*/DinamicaNonLineare_Controllo_B./*@>7e153*/TSamp_o/*@>58c87*/ = /*@>7b41d*/DinamicaNonLineare_Controllo_B./*@>7e156*/rtb_Saturation_g_c/*@>6f6a5*/ * /*@>7b877*/DinamicaNonLineare_Controllo_P./*@>7e276*/TSamp_WtEt_e;
+/* {S!d66}Sum: '<S3>/Diff' incorporates:
+ *  UnitDelay: '<S3>/UD'
+ *
+ * Block description for '<S3>/Diff':
+ *  
+ *  Add in CPU
+ *
+ * Block description for '<S3>/UD':
+ *  
+ *  Store in Global RAM
+ */
+/*@>7b423*/DinamicaNonLineare_Controllo_B./*@>7e159*/rtb_Diff_d_k/*@>5c762*/ = /*@>7b429*/DinamicaNonLineare_Controllo_B./*@>7e15c*/TSamp_o/*@>5c75f*/ - /*@>7ba2a*/DinamicaNonLineare_Controllo_DW./*@>7e2fa*/UD_DSTATE_at;
+/* {S!d68}Sum: '<Root>/Sum3' incorporates:
+ *  Constant: '<Root>/Constant'
+ */
+/*@>7b42f*/DinamicaNonLineare_Controllo_B./*@>7e15f*/Sum3/*@>5c767*/ = /*@>7b87d*/DinamicaNonLineare_Controllo_P./*@>7e279*/Constant_Value_lh/*@>5c764*/ - /*@>7b435*/DinamicaNonLineare_Controllo_B./*@>7e162*/DiscreteTimeIntegrator/*@>79b67*/[/*@>79b64*/8];
+/* {S!d70}Gain: '<S195>/Filter Coefficient' incorporates:
+ *  DiscreteIntegrator: '<S187>/Filter'
+ *  Gain: '<S186>/Derivative Gain'
+ *  Sum: '<S187>/SumD'
+ */
+/*@>7b43b*/DinamicaNonLineare_Controllo_B./*@>7e165*/FilterCoefficient/*@>58eab*/ = (/*@>7b883*/DinamicaNonLineare_Controllo_P./*@>7e27c*/PIDController3_D/*@>6f6a1*/ * /*@>7b441*/DinamicaNonLineare_Controllo_B./*@>7e168*/Sum3/*@>66233*/ - /*@>7ba30*/DinamicaNonLineare_Controllo_DW./*@>7e2fd*/Filter_DSTATE)/*@>6f69d*/ * /*@>7b889*/DinamicaNonLineare_Controllo_P./*@>7e27f*/PIDController3_N;
+/* {S!d72}Sum: '<Root>/Sum5' incorporates:
+ *  DiscreteIntegrator: '<S192>/Integrator'
+ *  Gain: '<S197>/Proportional Gain'
+ *  Sum: '<S201>/Sum'
+ */
+/*@>7b447*/DinamicaNonLineare_Controllo_B./*@>7e16b*/rtb_Sum5_c/*@>5c772*/ = (/*@>7b88f*/DinamicaNonLineare_Controllo_P./*@>7e282*/PIDController3_P/*@>6f699*/ * /*@>7b44d*/DinamicaNonLineare_Controllo_B./*@>7e16e*/Sum3/*@>5c76e*/ + /*@>7ba36*/DinamicaNonLineare_Controllo_DW./*@>7e300*/Integrator_DSTATE_o)/*@>5c76f*/ + /*@>7b453*/DinamicaNonLineare_Controllo_B./*@>7e171*/FilterCoefficient;
+/* {S!d78}Saturate: '<S199>/Saturation' */
+/*@>72906*/if (/*@>7b459*/DinamicaNonLineare_Controllo_B./*@>7e174*/rtb_Sum5_c/*@>709e5*/ > /*@>7b895*/DinamicaNonLineare_Controllo_P./*@>7e285*/PIDController3_UpperSaturationL) {
+    /* {S!d74}Sum: '<Root>/Sum5' */
+    /*@>7b465*/DinamicaNonLineare_Controllo_B./*@>7e17a*/rtb_Sum5_c/*@>72909*/ = /*@>7b8a1*/DinamicaNonLineare_Controllo_P./*@>7e28b*/PIDController3_UpperSaturationL;
+} else {
+    /*@>7291a*/if (/*@>7b45f*/DinamicaNonLineare_Controllo_B./*@>7e177*/rtb_Sum5_c/*@>709e2*/ < /*@>7b89b*/DinamicaNonLineare_Controllo_P./*@>7e288*/PIDController3_LowerSaturationL) {
+        /* {S!d76}Sum: '<Root>/Sum5' */
+        /*@>7b46b*/DinamicaNonLineare_Controllo_B./*@>7e17d*/rtb_Sum5_c/*@>7291d*/ = /*@>7b8a7*/DinamicaNonLineare_Controllo_P./*@>7e28e*/PIDController3_LowerSaturationL;
+    }
+}
+/* {E!d78}End of Saturate: '<S199>/Saturation' */
+
+/* {S!d80}Sum: '<S4>/Diff' incorporates:
+ *  DataTypeConversion: '<S213>/Data Type Conversion'
+ *  MATLABSystem: '<Root>/I2C Read'
+ *
+ * Block description for '<S4>/Diff':
+ *  
+ *  Add in CPU
+ */
+/*@>7b471*/DinamicaNonLineare_Controllo_B./*@>7e180*/rtb_Diff_ka_m/*@>58ec2*/ = /*@>7b477*/DinamicaNonLineare_Controllo_B./*@>7e183*/output/*@>79b6c*/[/*@>79b69*/5];
+/* {S!d82}Sum: '<Root>/Sum5' incorporates:
+ *  Constant: '<S213>/Constant'
+ *  Gain: '<S213>/Gain'
+ *  Sum: '<S213>/Add'
+ */
+/*@>7b47d*/DinamicaNonLineare_Controllo_B./*@>7e186*/rtb_Sum5_c/*@>7da27*/ += /*@>7b8ad*/DinamicaNonLineare_Controllo_P./*@>7e291*/Gain_Gain_i/*@>6f695*/ * /*@>7b483*/DinamicaNonLineare_Controllo_B./*@>7e189*/rtb_Diff_ka_m/*@>66255*/ + /*@>7b8b3*/DinamicaNonLineare_Controllo_P./*@>7e294*/Constant_Value_o3;
+/* {S!d84}SampleTimeMath: '<S4>/TSamp'
+ *
+ * About '<S4>/TSamp':
+ *  y = u * K where K = 1 / ( w * Ts )
+ */
+/*@>7b48f*/DinamicaNonLineare_Controllo_B./*@>7e18c*/TSamp_n3/*@>58eec*/ = /*@>7b495*/DinamicaNonLineare_Controllo_B./*@>7e18f*/rtb_Sum5_c/*@>6f691*/ * /*@>7b8b9*/DinamicaNonLineare_Controllo_P./*@>7e297*/TSamp_WtEt_h;
+/* {S!d86}Sum: '<S4>/Diff' incorporates:
+ *  UnitDelay: '<S4>/UD'
+ *
+ * Block description for '<S4>/Diff':
+ *  
+ *  Add in CPU
+ *
+ * Block description for '<S4>/UD':
+ *  
+ *  Store in Global RAM
+ */
+/*@>7b49b*/DinamicaNonLineare_Controllo_B./*@>7e192*/rtb_Diff_ka_m/*@>5c783*/ = /*@>7b4a1*/DinamicaNonLineare_Controllo_B./*@>7e195*/TSamp_n3/*@>5c780*/ - /*@>7ba3c*/DinamicaNonLineare_Controllo_DW./*@>7e303*/UD_DSTATE_g;
+%if !WHITE_SPACE(tlcOutputsFcnOfS1B8)
+/* {S!d88}MATLABFcn: '<Root>/Interpreted MATLAB Function' */
+%<SLibCG_DumpSSCode("/*@[7d4d7*/",tlcOutputsFcnOfS1B8,"/*@]*/")>\
+%endif
+/* {S!d90}Gain: '<S189>/Integral Gain' */
+/*@>7b4e3*/DinamicaNonLineare_Controllo_B./*@>7e198*/IntegralGain/*@>59028*/ = /*@>7b8bf*/DinamicaNonLineare_Controllo_P./*@>7e29a*/PIDController3_I/*@>6f68d*/ * /*@>7b4e9*/DinamicaNonLineare_Controllo_B./*@>7e19b*/Sum3;
+/* {S!d92}Gain: '<S141>/Integral Gain' */
+/*@>7b4ef*/DinamicaNonLineare_Controllo_B./*@>7e19e*/IntegralGain_d/*@>59031*/ = /*@>7b8c5*/DinamicaNonLineare_Controllo_P./*@>7e29d*/PIDController2_I/*@>6f689*/ * /*@>7b4f5*/DinamicaNonLineare_Controllo_B./*@>7e1a1*/Sum2;
+/* {S!d94}Gain: '<S91>/Integral Gain' */
+/*@>7b4fb*/DinamicaNonLineare_Controllo_B./*@>7e1a4*/IntegralGain_dp/*@>5903a*/ = /*@>7b8cb*/DinamicaNonLineare_Controllo_P./*@>7e2a0*/PIDController1_I/*@>6f685*/ * /*@>7b501*/DinamicaNonLineare_Controllo_B./*@>7e1a7*/Sum1;
+/* {S!d96}Gain: '<S41>/Integral Gain' */
+/*@>7b507*/DinamicaNonLineare_Controllo_B./*@>7e1aa*/IntegralGain_p/*@>59043*/ = /*@>7b8d1*/DinamicaNonLineare_Controllo_P./*@>7e2a3*/PIDController_I/*@>6f681*/ * /*@>7b50d*/DinamicaNonLineare_Controllo_B./*@>7e1ad*/Sum;
+/* {S!d98}SimscapeExecutionBlock: '<S222>/STATE_1' */
+/*@>6ef63*/simulationData/*@>5b568*/ = /*@>5b566*/(NeslSimulationData *)/*@>7ba42*/DinamicaNonLineare_Controllo_DW./*@>7e306*/STATE_1_SimData;
+/*@>7b513*/DinamicaNonLineare_Controllo_B./*@>7e1b0*/time/*@>5b56f*/ = %<SLibCG_DumpSSCode("/*@[7d4d8*/",(SLibCG_SE(LibGetT())),"/*@]*/")>;
+/*@>6ef59*/simulationData->mData->/*@>7e05a*/mTime./*@>7e05d*/mN/*@>5b57e*/ = /*@>7d9e6*/1;
+/*@>6ef53*/simulationData->mData->/*@>7e054*/mTime./*@>7e057*/mX/*@>5b58c*/ = &/*@>7b519*/DinamicaNonLineare_Controllo_B./*@>7e1b3*/time;
+/*@>6ef4d*/simulationData->mData->/*@>7e04e*/mContStates./*@>7e051*/mN/*@>5b598*/ = /*@>7d9e9*/0;
+/*@>6ef48*/simulationData->mData->/*@>7e048*/mContStates./*@>7e04b*/mX/*@>5b5a3*/ = /*@>6ef60*/NULL;
+/*@>6ef42*/simulationData->mData->/*@>7e042*/mDiscStates./*@>7e045*/mN/*@>5b5af*/ = /*@>7d9ec*/0;
+/*@>6ef3d*/simulationData->mData->/*@>7e03c*/mDiscStates./*@>7e03f*/mX/*@>5b5ba*/ = &/*@>7ba48*/DinamicaNonLineare_Controllo_DW./*@>7e309*/STATE_1_Discrete;
+/*@>6ef37*/simulationData->mData->/*@>7e036*/mModeVector./*@>7e039*/mN/*@>5b5c6*/ = /*@>7d9ef*/0;
+/*@>6ef32*/simulationData->mData->/*@>7e030*/mModeVector./*@>7e033*/mX/*@>5b5d2*/ = /*@>5b5c8*/(int32_T *)&/*@>7ba4e*/DinamicaNonLineare_Controllo_DW./*@>7e30c*/STATE_1_Modes;
+/*@>6ef2c*/tmp/*@>5b5d7*/ = %<SLibCG_DumpSSCode("/*@[7d4db*/",(SLibCG_SE(SLibCGIRGetSolverFoundZcEvents())),"/*@]*/")>;
+/*@>6ef28*/simulationData->mData->/*@>7e02d*/mFoundZcEvents/*@>5b5e2*/ = /*@>6ef2a*/tmp;
+/*@>6ef23*/simulationData->mData->/*@>7e02a*/mIsMajorTimeStep/*@>5b5ed*/ = %<SLibCG_DumpSSCode("/*@[7d4de*/",(SLibCG_SE(LibIsMajorTimeStep())),"/*@]*/")>;
+/*@>6ef1e*/tmp/*@>5b5f2*/ = %<SLibCG_DumpSSCode("/*@[7d4e1*/",(SLibCG_SE(SLibCGIRGetSolverAssertCheck())),"/*@]*/")>;
+/*@>6ef1a*/simulationData->mData->/*@>7e027*/mIsSolverAssertCheck/*@>5b5fd*/ = /*@>6ef1c*/tmp;
+/*@>6ef15*/simulationData->mData->/*@>7e024*/mIsSolverCheckingCIC/*@>5b607*/ = /*@>6ef17*/false;
+/*@>6ef10*/simulationData->mData->/*@>7e021*/mIsComputingJacobian/*@>5b611*/ = /*@>6ef12*/false;
+/*@>6ef0b*/simulationData->mData->/*@>7e01e*/mIsEvaluatingF0/*@>5b61b*/ = /*@>6ef0d*/false;
+/*@>6ef06*/simulationData->mData->/*@>7e01b*/mIsSolverRequestingReset/*@>5b625*/ = /*@>6ef08*/false;
+/*@>7b51f*/DinamicaNonLineare_Controllo_B./*@>7e1b6*/iv/*@>5b628*/[/*@>6ef02*/0]/*@>5b62b*/ = /*@>7d9f2*/0;
+/*@>7b525*/DinamicaNonLineare_Controllo_B./*@>7e1b9*/dv/*@>6b460*/[/*@>6f128*/0]/*@>5b634*/ = /*@>7b52b*/DinamicaNonLineare_Controllo_B./*@>7e1bc*/INPUT_1_1_1/*@>79b71*/[/*@>79b6e*/0];
+/*@>7b531*/DinamicaNonLineare_Controllo_B./*@>7e1bf*/dv/*@>6b492*/[/*@>6f12e*/1]/*@>5b63d*/ = /*@>7b537*/DinamicaNonLineare_Controllo_B./*@>7e1c2*/INPUT_1_1_1/*@>79b76*/[/*@>79b73*/1];
+/*@>7b53d*/DinamicaNonLineare_Controllo_B./*@>7e1c5*/dv/*@>6b4c4*/[/*@>6f134*/2]/*@>5b646*/ = /*@>7b543*/DinamicaNonLineare_Controllo_B./*@>7e1c8*/INPUT_1_1_1/*@>79b7b*/[/*@>79b78*/2];
+/*@>7b549*/DinamicaNonLineare_Controllo_B./*@>7e1cb*/dv/*@>6b4f6*/[/*@>6f13a*/3]/*@>5b64f*/ = /*@>7b54f*/DinamicaNonLineare_Controllo_B./*@>7e1ce*/INPUT_1_1_1/*@>79b80*/[/*@>79b7d*/3];
+/*@>7b555*/DinamicaNonLineare_Controllo_B./*@>7e1d1*/iv/*@>5b652*/[/*@>6ef00*/1]/*@>5b655*/ = /*@>7d9f5*/4;
+/*@>7b55b*/DinamicaNonLineare_Controllo_B./*@>7e1d4*/dv/*@>6b529*/[/*@>6f140*/4]/*@>5b65e*/ = /*@>7b561*/DinamicaNonLineare_Controllo_B./*@>7e1d7*/INPUT_2_1_1/*@>79b85*/[/*@>79b82*/0];
+/*@>7b567*/DinamicaNonLineare_Controllo_B./*@>7e1da*/dv/*@>6b55b*/[/*@>6f146*/5]/*@>5b667*/ = /*@>7b56d*/DinamicaNonLineare_Controllo_B./*@>7e1dd*/INPUT_2_1_1/*@>79b8a*/[/*@>79b87*/1];
+/*@>7b573*/DinamicaNonLineare_Controllo_B./*@>7e1e0*/dv/*@>6b58d*/[/*@>6f14c*/6]/*@>5b670*/ = /*@>7b579*/DinamicaNonLineare_Controllo_B./*@>7e1e3*/INPUT_2_1_1/*@>79b8f*/[/*@>79b8c*/2];
+/*@>7b57f*/DinamicaNonLineare_Controllo_B./*@>7e1e6*/dv/*@>6b5bf*/[/*@>6f152*/7]/*@>5b679*/ = /*@>7b585*/DinamicaNonLineare_Controllo_B./*@>7e1e9*/INPUT_2_1_1/*@>79b94*/[/*@>79b91*/3];
+/*@>7b58b*/DinamicaNonLineare_Controllo_B./*@>7e1ec*/iv/*@>5b67c*/[/*@>6eefe*/2]/*@>5b67f*/ = /*@>7d9f8*/8;
+/*@>7b591*/DinamicaNonLineare_Controllo_B./*@>7e1ef*/dv/*@>6b5f2*/[/*@>6f158*/8]/*@>5b688*/ = /*@>7b597*/DinamicaNonLineare_Controllo_B./*@>7e1f2*/INPUT_3_1_1/*@>79b99*/[/*@>79b96*/0];
+/*@>7b59d*/DinamicaNonLineare_Controllo_B./*@>7e1f5*/dv/*@>6b624*/[/*@>6f15e*/9]/*@>5b691*/ = /*@>7b5a3*/DinamicaNonLineare_Controllo_B./*@>7e1f8*/INPUT_3_1_1/*@>79b9e*/[/*@>79b9b*/1];
+/*@>7b5a9*/DinamicaNonLineare_Controllo_B./*@>7e1fb*/dv/*@>6b656*/[/*@>6f164*/10]/*@>5b69a*/ = /*@>7b5af*/DinamicaNonLineare_Controllo_B./*@>7e1fe*/INPUT_3_1_1/*@>79ba3*/[/*@>79ba0*/2];
+/*@>7b5b5*/DinamicaNonLineare_Controllo_B./*@>7e201*/dv/*@>6b688*/[/*@>6f16a*/11]/*@>5b6a3*/ = /*@>7b5bb*/DinamicaNonLineare_Controllo_B./*@>7e204*/INPUT_3_1_1/*@>79ba8*/[/*@>79ba5*/3];
+/*@>7b5c1*/DinamicaNonLineare_Controllo_B./*@>7e207*/iv/*@>5b6a6*/[/*@>6eefc*/3]/*@>5b6a9*/ = /*@>7d9fb*/12;
+/*@>6eef9*/simulationData->mData->/*@>7e015*/mInputValues./*@>7e018*/mN/*@>5b6b5*/ = /*@>7d9fe*/12;
+/*@>6eef3*/simulationData->mData->/*@>7e00f*/mInputValues./*@>7e012*/mX/*@>5b6c3*/ = &/*@>7b5c7*/DinamicaNonLineare_Controllo_B./*@>7e20a*/dv/*@>5b6b9*/[/*@>6eef5*/0];
+/*@>6eeed*/simulationData->mData->/*@>7e009*/mInputOffsets./*@>7e00c*/mN/*@>5b6cf*/ = /*@>7da01*/4;
+/*@>6eee7*/simulationData->mData->/*@>7e003*/mInputOffsets./*@>7e006*/mX/*@>5b6de*/ = /*@>5b6d4*/(int32_T *)&/*@>7b5cd*/DinamicaNonLineare_Controllo_B./*@>7e20d*/iv/*@>5b6d3*/[/*@>6eee9*/0];
+/*@>6eee0*/simulationData->mData->/*@>7dffd*/mOutputs./*@>7e000*/mN/*@>5b6eb*/ = /*@>7da04*/0;
+/*@>6eedb*/simulationData->mData->/*@>7dff7*/mOutputs./*@>7dffa*/mX/*@>5b6f6*/ = /*@>6eee3*/NULL;
+/*@>6eed5*/simulationData->mData->/*@>7dff1*/mSampleHits./*@>7dff4*/mN/*@>5b702*/ = /*@>7da07*/0;
+/*@>6eecf*/simulationData->mData->/*@>7dfeb*/mSampleHits./*@>7dfee*/mX/*@>5b70e*/ = /*@>6eed1*/NULL;
+/*@>6eec9*/simulationData->mData->/*@>7dfe8*/mIsFundamentalSampleHit/*@>5b718*/ = /*@>6eecb*/false;
+/*@>6eec4*/simulationData->mData->/*@>7dfe2*/mTolerances./*@>7dfe5*/mN/*@>5b724*/ = /*@>7da0a*/0;
+/*@>6eebe*/simulationData->mData->/*@>7dfdc*/mTolerances./*@>7dfdf*/mX/*@>5b730*/ = /*@>6eec0*/NULL;
+/*@>6eeb8*/simulationData->mData->/*@>7dfd9*/mCstateHasChanged/*@>5b73a*/ = /*@>6eeba*/false;
+/*@>6eeb2*/diagnosticManager/*@>5b746*/ = /*@>5b744*/(NeuDiagnosticManager *)/*@>7ba54*/DinamicaNonLineare_Controllo_DW./*@>7e30f*/STATE_1_DiagMgr;
+/*@>6eead*/diagnosticTree/*@>5b74d*/ = /*@>77a67*/neu_diagnostic_manager_get_initial_tree(/*@>6eeb0*/diagnosticManager);
+/*@>6eea5*/tmp_0/*@>5b75e*/ = /*@>77a69*/ne_simulator_method(/*@>62b0e*/(NeslSimulator *)/*@>7ba5a*/DinamicaNonLineare_Controllo_DW./*@>7e312*/STATE_1_Simulator, /*@>6eeac*/NESL_SIM_OUTPUTS, /*@>6eeaa*/simulationData, /*@>6eea8*/diagnosticManager);
+/*@>5b780*/if (/*@>6eea3*/tmp_0/*@>5b763*/ != /*@>705dc*/0L) {
+    /*@>6ee9e*/tmp/*@>5b769*/ = /*@>77a6d*/error_buffer_is_empty(%<SLibCG_DumpSSCode("/*@[7d4e4*/",(LibGetRTModelErrorStatus()),"/*@]*/")>);
+    /*@>5b77e*/if (/*@>6ee9c*/tmp) {
+        /*@>6ee99*/msg/*@>5b772*/ = /*@>77a6f*/rtw_diagnostics_msg(/*@>6ee50*/diagnosticTree);
+        %<SLibCG_DumpSSCode("/*@[7d4e8*/",(LibSetRTModelErrorStatus("/*@>6ee4e*/msg")),"/*@]*/")>;
+    }
+}
+/* {E!d98}End of SimscapeExecutionBlock: '<S222>/STATE_1' */
+%<SLibInsertSolverResetCode()>\
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Outputs(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 0, fcnProtoType)>
+%endfunction

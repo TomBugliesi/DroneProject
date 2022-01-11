@@ -1,0 +1,102 @@
+%implements s1_b0_5hts_TLCInterface "C"
+
+%function getInputAddr_1_8_0_0_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<7d7b5*//*@>7d7af*/DinamicaNonLineare_Controllo_B./*@>7d7bb*/DiscreteTimeIntegrator" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInput_1_8_0_0_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>7d7cb*/DinamicaNonLineare_Controllo_B./*@>7d7d8*/DiscreteTimeIntegrator" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInputAddr_1_8_0_0_0_0_1(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<7d7ec*//*@>7d7e6*/DinamicaNonLineare_Controllo_B./*@>7d7f2*/rtb_Sum4_f"
+%endfunction
+
+%function getInput_1_8_0_0_0_0_1(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>7d802*/DinamicaNonLineare_Controllo_B./*@>7d80f*/rtb_Sum4_f"
+%endfunction
+
+%function getInputAddr_1_8_0_0_0_0_2(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<7d823*//*@>7d81d*/DinamicaNonLineare_Controllo_B./*@>7d829*/rtb_Saturation_p"
+%endfunction
+
+%function getInput_1_8_0_0_0_0_2(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>7d839*/DinamicaNonLineare_Controllo_B./*@>7d846*/rtb_Saturation_p"
+%endfunction
+
+%function getInputAddr_1_8_0_0_0_0_3(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<7d85a*//*@>7d854*/DinamicaNonLineare_Controllo_B./*@>7d860*/rtb_Saturation_g_c"
+%endfunction
+
+%function getInput_1_8_0_0_0_0_3(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>7d870*/DinamicaNonLineare_Controllo_B./*@>7d87d*/rtb_Saturation_g_c"
+%endfunction
+
+%function getInputAddr_1_8_0_0_0_0_4(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<7d891*//*@>7d88b*/DinamicaNonLineare_Controllo_B./*@>7d897*/rtb_Sum5_c"
+%endfunction
+
+%function getInput_1_8_0_0_0_0_4(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>7d8a7*/DinamicaNonLineare_Controllo_B./*@>7d8b4*/rtb_Sum5_c"
+%endfunction
+
+%function getInputAddr_1_8_0_0_0_0_5(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<7d8c8*//*@>7d8c2*/DinamicaNonLineare_Controllo_B./*@>7d8ce*/rtb_Diff_k_c"
+%endfunction
+
+%function getInput_1_8_0_0_0_0_5(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>7d8de*/DinamicaNonLineare_Controllo_B./*@>7d8eb*/rtb_Diff_k_c"
+%endfunction
+
+%function getInputAddr_1_8_0_0_0_0_6(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<7d8ff*//*@>7d8f9*/DinamicaNonLineare_Controllo_B./*@>7d905*/rtb_Diff_m_b"
+%endfunction
+
+%function getInput_1_8_0_0_0_0_6(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>7d915*/DinamicaNonLineare_Controllo_B./*@>7d922*/rtb_Diff_m_b"
+%endfunction
+
+%function getInputAddr_1_8_0_0_0_0_7(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<7d936*//*@>7d930*/DinamicaNonLineare_Controllo_B./*@>7d93c*/rtb_Diff_d_k"
+%endfunction
+
+%function getInput_1_8_0_0_0_0_7(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>7d94c*/DinamicaNonLineare_Controllo_B./*@>7d959*/rtb_Diff_d_k"
+%endfunction
+
+%function getInputAddr_1_8_0_0_0_0_8(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<7d96d*//*@>7d967*/DinamicaNonLineare_Controllo_B./*@>7d973*/rtb_Diff_ka_m"
+%endfunction
+
+%function getInput_1_8_0_0_0_0_8(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>7d983*/DinamicaNonLineare_Controllo_B./*@>7d990*/rtb_Diff_ka_m"
+%endfunction
+
+%function getOutputAddr_1_8_0_0_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&/*@<7d9a4*//*@>7d99e*/DinamicaNonLineare_Controllo_B./*@>7d9aa*/InterpretedMATLABFunction" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getOutput_1_8_0_0_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "/*@>7d9ba*/DinamicaNonLineare_Controllo_B./*@>7d9c7*/InterpretedMATLABFunction" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+

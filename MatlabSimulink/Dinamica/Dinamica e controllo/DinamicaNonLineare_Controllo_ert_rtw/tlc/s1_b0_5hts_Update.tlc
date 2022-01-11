@@ -1,0 +1,136 @@
+%implements s1_b0_5hts_Update "C"
+
+%function Update(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+NeslSimulationData *simulationData;
+NeuDiagnosticManager *diagnosticManager;
+NeuDiagnosticTree *diagnosticTree;
+char *msg;
+int32_T tmp_0;
+int16_T i;
+boolean_T tmp;
+%closefile localVarDecl
+/* {S!d100}Update for DiscreteIntegrator: '<Root>/Discrete-Time Integrator' */
+/*@>6b737*/for (/*@>7e3f5*/i = /*@>6f30f*/0; /*@>7e3fd*/i < /*@>6f30e*/12; /*@>7e3fa*/i/*@>7e401*/++) {
+    /*@>7ba6c*/DinamicaNonLineare_Controllo_DW./*@>7e78d*/DiscreteTimeIntegrator_DSTATE/*@>6b729*/[/*@>6f30a*/i]/*@>7e402*/ += /*@>7b8dd*/DinamicaNonLineare_Controllo_P./*@>7e76f*/DiscreteTimeIntegrator_gainval/*@>6f710*/ * /*@>7b5d9*/DinamicaNonLineare_Controllo_B./*@>7e6e8*/InterpretedMATLABFunction/*@>79bae*/[/*@>79bab*/i];
+    /*@>57cf0*/if (/*@>7ba7e*/DinamicaNonLineare_Controllo_DW./*@>7e793*/DiscreteTimeIntegrator_DSTATE/*@>79bba*/[/*@>79bb7*/i]/*@>692c5*/ >= /*@>7b8e3*/DinamicaNonLineare_Controllo_P./*@>7e772*/DiscreteTimeIntegrator_UpperSat) {
+        /*@>7ba90*/DinamicaNonLineare_Controllo_DW./*@>7e79c*/DiscreteTimeIntegrator_DSTATE/*@>6934a*/[/*@>6f2e8*/i]/*@>692ee*/ = /*@>7b8ef*/DinamicaNonLineare_Controllo_P./*@>7e778*/DiscreteTimeIntegrator_UpperSat;
+    } else {
+        /*@>57cf7*/if (/*@>7ba8a*/DinamicaNonLineare_Controllo_DW./*@>7e799*/DiscreteTimeIntegrator_DSTATE/*@>79bc0*/[/*@>79bbd*/i]/*@>692d9*/ <= /*@>7b8e9*/DinamicaNonLineare_Controllo_P./*@>7e775*/DiscreteTimeIntegrator_LowerSat) {
+            /*@>7baa2*/DinamicaNonLineare_Controllo_DW./*@>7e7a2*/DiscreteTimeIntegrator_DSTATE/*@>69353*/[/*@>6f2ea*/i]/*@>69306*/ = /*@>7b8fb*/DinamicaNonLineare_Controllo_P./*@>7e77e*/DiscreteTimeIntegrator_LowerSat;
+        }
+    }
+}
+/* {E!d100}End of Update for DiscreteIntegrator: '<Root>/Discrete-Time Integrator' */
+
+/* {S!d102}Update for DiscreteIntegrator: '<S44>/Integrator' */
+/*@>7ba60*/DinamicaNonLineare_Controllo_DW./*@>7e78a*/Integrator_DSTATE/*@>7e403*/ += /*@>7b8d7*/DinamicaNonLineare_Controllo_P./*@>7e76c*/Integrator_gainval/*@>6f70c*/ * /*@>7b5d3*/DinamicaNonLineare_Controllo_B./*@>7e6e5*/IntegralGain_p;
+/* {S!d104}Update for Delay: '<S37>/UD' */
+/*@>7ba78*/DinamicaNonLineare_Controllo_DW./*@>7e790*/UD_DSTATE/*@>5bc8f*/ = /*@>7b5df*/DinamicaNonLineare_Controllo_B./*@>7e6eb*/Tsamp;
+/* {S!d106}Update for UnitDelay: '<S1>/UD'
+ *
+ * Block description for '<S1>/UD':
+ *  
+ *  Store in Global RAM
+ */
+/*@>7ba84*/DinamicaNonLineare_Controllo_DW./*@>7e796*/UD_DSTATE_m/*@>5bc9f*/ = /*@>7b5e5*/DinamicaNonLineare_Controllo_B./*@>7e6ee*/TSamp;
+/* {S!d108}Update for DiscreteIntegrator: '<S94>/Integrator' */
+/*@>7ba96*/DinamicaNonLineare_Controllo_DW./*@>7e79f*/Integrator_DSTATE_b/*@>7e404*/ += /*@>7b8f5*/DinamicaNonLineare_Controllo_P./*@>7e77b*/Integrator_gainval_b/*@>6f708*/ * /*@>7b5eb*/DinamicaNonLineare_Controllo_B./*@>7e6f1*/IntegralGain_dp;
+/* {S!d110}Update for Delay: '<S87>/UD' */
+/*@>7baa8*/DinamicaNonLineare_Controllo_DW./*@>7e7a5*/UD_DSTATE_d/*@>5bcaf*/ = /*@>7b5f1*/DinamicaNonLineare_Controllo_B./*@>7e6f4*/Tsamp_o;
+/* {S!d112}Update for UnitDelay: '<S2>/UD'
+ *
+ * Block description for '<S2>/UD':
+ *  
+ *  Store in Global RAM
+ */
+/*@>7baae*/DinamicaNonLineare_Controllo_DW./*@>7e7a8*/UD_DSTATE_a/*@>5bcbf*/ = /*@>7b5f7*/DinamicaNonLineare_Controllo_B./*@>7e6f7*/TSamp_n;
+/* {S!d114}Update for DiscreteIntegrator: '<S144>/Integrator' */
+/*@>7bab4*/DinamicaNonLineare_Controllo_DW./*@>7e7ab*/Integrator_DSTATE_c/*@>7e405*/ += /*@>7b901*/DinamicaNonLineare_Controllo_P./*@>7e781*/Integrator_gainval_g/*@>6f704*/ * /*@>7b5fd*/DinamicaNonLineare_Controllo_B./*@>7e6fa*/IntegralGain_d;
+/* {S!d116}Update for Delay: '<S137>/UD' */
+/*@>7bac0*/DinamicaNonLineare_Controllo_DW./*@>7e7ae*/UD_DSTATE_n/*@>5bccf*/ = /*@>7b603*/DinamicaNonLineare_Controllo_B./*@>7e6fd*/Tsamp_f;
+/* {S!d118}Update for UnitDelay: '<S3>/UD'
+ *
+ * Block description for '<S3>/UD':
+ *  
+ *  Store in Global RAM
+ */
+/*@>7bac6*/DinamicaNonLineare_Controllo_DW./*@>7e7b1*/UD_DSTATE_at/*@>5bcdf*/ = /*@>7b609*/DinamicaNonLineare_Controllo_B./*@>7e700*/TSamp_o;
+/* {S!d120}Update for DiscreteIntegrator: '<S192>/Integrator' */
+/*@>7bacc*/DinamicaNonLineare_Controllo_DW./*@>7e7b4*/Integrator_DSTATE_o/*@>7e406*/ += /*@>7b907*/DinamicaNonLineare_Controllo_P./*@>7e784*/Integrator_gainval_c/*@>6f700*/ * /*@>7b60f*/DinamicaNonLineare_Controllo_B./*@>7e703*/IntegralGain;
+/* {S!d122}Update for DiscreteIntegrator: '<S187>/Filter' */
+/*@>7bad8*/DinamicaNonLineare_Controllo_DW./*@>7e7b7*/Filter_DSTATE/*@>7e407*/ += /*@>7b90d*/DinamicaNonLineare_Controllo_P./*@>7e787*/Filter_gainval/*@>6f6fc*/ * /*@>7b615*/DinamicaNonLineare_Controllo_B./*@>7e706*/FilterCoefficient;
+/* {S!d124}Update for UnitDelay: '<S4>/UD'
+ *
+ * Block description for '<S4>/UD':
+ *  
+ *  Store in Global RAM
+ */
+/*@>7bae4*/DinamicaNonLineare_Controllo_DW./*@>7e7ba*/UD_DSTATE_g/*@>5bcef*/ = /*@>7b61b*/DinamicaNonLineare_Controllo_B./*@>7e709*/TSamp_n3;
+/* {S!d126}Update for SimscapeExecutionBlock: '<S222>/STATE_1' */
+/*@>6f23b*/simulationData/*@>5bd0e*/ = /*@>5bd0c*/(NeslSimulationData *)/*@>7baea*/DinamicaNonLineare_Controllo_DW./*@>7e7bd*/STATE_1_SimData;
+/*@>7b621*/DinamicaNonLineare_Controllo_B./*@>7e70c*/time_g/*@>5bd15*/ = %<SLibCG_DumpSSCode("/*@[7d52e*/",(SLibCG_SE(LibGetT())),"/*@]*/")>;
+/*@>6f245*/simulationData->mData->/*@>7e68b*/mTime./*@>7e688*/mN/*@>5bd24*/ = /*@>7e3d1*/1;
+/*@>6f24b*/simulationData->mData->/*@>7e691*/mTime./*@>7e68e*/mX/*@>5bd32*/ = &/*@>7b627*/DinamicaNonLineare_Controllo_B./*@>7e70f*/time_g;
+/*@>6f251*/simulationData->mData->/*@>7e697*/mContStates./*@>7e694*/mN/*@>5bd3e*/ = /*@>7e3d4*/0;
+/*@>6f256*/simulationData->mData->/*@>7e69d*/mContStates./*@>7e69a*/mX/*@>5bd49*/ = /*@>6f23f*/NULL;
+/*@>6f25c*/simulationData->mData->/*@>7e6a3*/mDiscStates./*@>7e6a0*/mN/*@>5bd55*/ = /*@>7e3d7*/0;
+/*@>6f261*/simulationData->mData->/*@>7e6a9*/mDiscStates./*@>7e6a6*/mX/*@>5bd60*/ = &/*@>7baf0*/DinamicaNonLineare_Controllo_DW./*@>7e7c0*/STATE_1_Discrete;
+/*@>6f267*/simulationData->mData->/*@>7e6af*/mModeVector./*@>7e6ac*/mN/*@>5bd6c*/ = /*@>7e3da*/0;
+/*@>6f26c*/simulationData->mData->/*@>7e6b5*/mModeVector./*@>7e6b2*/mX/*@>5bd78*/ = /*@>5bd6e*/(int32_T *)&/*@>7baf6*/DinamicaNonLineare_Controllo_DW./*@>7e7c3*/STATE_1_Modes;
+/*@>6f272*/tmp/*@>5bd7d*/ = %<SLibCG_DumpSSCode("/*@[7d531*/",(SLibCG_SE(SLibCGIRGetSolverFoundZcEvents())),"/*@]*/")>;
+/*@>6f276*/simulationData->mData->/*@>7e6b8*/mFoundZcEvents/*@>5bd88*/ = /*@>6f274*/tmp;
+/*@>6f27b*/simulationData->mData->/*@>7e6bb*/mIsMajorTimeStep/*@>5bd93*/ = %<SLibCG_DumpSSCode("/*@[7d534*/",(SLibCG_SE(LibIsMajorTimeStep())),"/*@]*/")>;
+/*@>6f280*/tmp/*@>5bd98*/ = %<SLibCG_DumpSSCode("/*@[7d537*/",(SLibCG_SE(SLibCGIRGetSolverAssertCheck())),"/*@]*/")>;
+/*@>6f284*/simulationData->mData->/*@>7e6be*/mIsSolverAssertCheck/*@>5bda3*/ = /*@>6f282*/tmp;
+/*@>6f289*/simulationData->mData->/*@>7e6c1*/mIsSolverCheckingCIC/*@>5bdad*/ = /*@>6f288*/false;
+/*@>6f28e*/simulationData->mData->/*@>7e6c4*/mIsComputingJacobian/*@>5bdb7*/ = /*@>6f28d*/false;
+/*@>6f293*/simulationData->mData->/*@>7e6c7*/mIsEvaluatingF0/*@>5bdc1*/ = /*@>6f292*/false;
+/*@>6f298*/simulationData->mData->/*@>7e6ca*/mIsSolverRequestingReset/*@>5bdcb*/ = /*@>6f297*/false;
+/*@>7b62d*/DinamicaNonLineare_Controllo_B./*@>7e712*/iv1/*@>5bdce*/[/*@>6f29d*/0]/*@>5bdd1*/ = /*@>7e3dd*/0;
+/*@>7b633*/DinamicaNonLineare_Controllo_B./*@>7e715*/dv1/*@>6b7c9*/[/*@>6f320*/0]/*@>5bdda*/ = /*@>7b639*/DinamicaNonLineare_Controllo_B./*@>7e718*/INPUT_1_1_1/*@>79bc5*/[/*@>79bc2*/0];
+/*@>7b63f*/DinamicaNonLineare_Controllo_B./*@>7e71b*/dv1/*@>6b7fb*/[/*@>6f326*/1]/*@>5bde3*/ = /*@>7b645*/DinamicaNonLineare_Controllo_B./*@>7e71e*/INPUT_1_1_1/*@>79bca*/[/*@>79bc7*/1];
+/*@>7b64b*/DinamicaNonLineare_Controllo_B./*@>7e721*/dv1/*@>6b82d*/[/*@>6f32c*/2]/*@>5bdec*/ = /*@>7b651*/DinamicaNonLineare_Controllo_B./*@>7e724*/INPUT_1_1_1/*@>79bcf*/[/*@>79bcc*/2];
+/*@>7b657*/DinamicaNonLineare_Controllo_B./*@>7e727*/dv1/*@>6b85f*/[/*@>6f332*/3]/*@>5bdf5*/ = /*@>7b65d*/DinamicaNonLineare_Controllo_B./*@>7e72a*/INPUT_1_1_1/*@>79bd4*/[/*@>79bd1*/3];
+/*@>7b663*/DinamicaNonLineare_Controllo_B./*@>7e72d*/iv1/*@>5bdf8*/[/*@>6f29f*/1]/*@>5bdfb*/ = /*@>7e3e0*/4;
+/*@>7b669*/DinamicaNonLineare_Controllo_B./*@>7e730*/dv1/*@>6b892*/[/*@>6f338*/4]/*@>5be04*/ = /*@>7b66f*/DinamicaNonLineare_Controllo_B./*@>7e733*/INPUT_2_1_1/*@>79bd9*/[/*@>79bd6*/0];
+/*@>7b675*/DinamicaNonLineare_Controllo_B./*@>7e736*/dv1/*@>6b8c4*/[/*@>6f33e*/5]/*@>5be0d*/ = /*@>7b67b*/DinamicaNonLineare_Controllo_B./*@>7e739*/INPUT_2_1_1/*@>79bde*/[/*@>79bdb*/1];
+/*@>7b681*/DinamicaNonLineare_Controllo_B./*@>7e73c*/dv1/*@>6b8f6*/[/*@>6f344*/6]/*@>5be16*/ = /*@>7b687*/DinamicaNonLineare_Controllo_B./*@>7e73f*/INPUT_2_1_1/*@>79be3*/[/*@>79be0*/2];
+/*@>7b68d*/DinamicaNonLineare_Controllo_B./*@>7e742*/dv1/*@>6b928*/[/*@>6f34a*/7]/*@>5be1f*/ = /*@>7b693*/DinamicaNonLineare_Controllo_B./*@>7e745*/INPUT_2_1_1/*@>79be8*/[/*@>79be5*/3];
+/*@>7b699*/DinamicaNonLineare_Controllo_B./*@>7e748*/iv1/*@>5be22*/[/*@>6f2a1*/2]/*@>5be25*/ = /*@>7e3e3*/8;
+/*@>7b69f*/DinamicaNonLineare_Controllo_B./*@>7e74b*/dv1/*@>6b95b*/[/*@>6f350*/8]/*@>5be2e*/ = /*@>7b6a5*/DinamicaNonLineare_Controllo_B./*@>7e74e*/INPUT_3_1_1/*@>79bed*/[/*@>79bea*/0];
+/*@>7b6ab*/DinamicaNonLineare_Controllo_B./*@>7e751*/dv1/*@>6b98d*/[/*@>6f356*/9]/*@>5be37*/ = /*@>7b6b1*/DinamicaNonLineare_Controllo_B./*@>7e754*/INPUT_3_1_1/*@>79bf2*/[/*@>79bef*/1];
+/*@>7b6b7*/DinamicaNonLineare_Controllo_B./*@>7e757*/dv1/*@>6b9bf*/[/*@>6f35c*/10]/*@>5be40*/ = /*@>7b6bd*/DinamicaNonLineare_Controllo_B./*@>7e75a*/INPUT_3_1_1/*@>79bf7*/[/*@>79bf4*/2];
+/*@>7b6c3*/DinamicaNonLineare_Controllo_B./*@>7e75d*/dv1/*@>6b9f1*/[/*@>6f362*/11]/*@>5be49*/ = /*@>7b6c9*/DinamicaNonLineare_Controllo_B./*@>7e760*/INPUT_3_1_1/*@>79bfc*/[/*@>79bf9*/3];
+/*@>7b6cf*/DinamicaNonLineare_Controllo_B./*@>7e763*/iv1/*@>5be4c*/[/*@>6f2a3*/3]/*@>5be4f*/ = /*@>7e3e6*/12;
+/*@>6f2a5*/simulationData->mData->/*@>7e6d0*/mInputValues./*@>7e6cd*/mN/*@>5be5b*/ = /*@>7e3e9*/12;
+/*@>6f2ab*/simulationData->mData->/*@>7e6d6*/mInputValues./*@>7e6d3*/mX/*@>5be69*/ = &/*@>7b6d5*/DinamicaNonLineare_Controllo_B./*@>7e766*/dv1/*@>5be5f*/[/*@>6f2aa*/0];
+/*@>6f2b1*/simulationData->mData->/*@>7e6dc*/mInputOffsets./*@>7e6d9*/mN/*@>5be75*/ = /*@>7e3ec*/4;
+/*@>6f2b7*/simulationData->mData->/*@>7e6e2*/mInputOffsets./*@>7e6df*/mX/*@>5be84*/ = /*@>5be7a*/(int32_T *)&/*@>7b6db*/DinamicaNonLineare_Controllo_B./*@>7e769*/iv1/*@>5be79*/[/*@>6f2b6*/0];
+/*@>6f2be*/diagnosticManager/*@>5be90*/ = /*@>5be8e*/(NeuDiagnosticManager *)/*@>7bafc*/DinamicaNonLineare_Controllo_DW./*@>7e7c6*/STATE_1_DiagMgr;
+/*@>6f2c3*/diagnosticTree/*@>5be97*/ = /*@>77a7b*/neu_diagnostic_manager_get_initial_tree(/*@>6f2c0*/diagnosticManager);
+/*@>6f2cb*/tmp_0/*@>5bea8*/ = /*@>77a7d*/ne_simulator_method(/*@>62c7d*/(NeslSimulator *)/*@>7bb02*/DinamicaNonLineare_Controllo_DW./*@>7e7c9*/STATE_1_Simulator, /*@>6f2c5*/NESL_SIM_UPDATE, /*@>6f2c6*/simulationData, /*@>6f2c8*/diagnosticManager);
+/*@>5beca*/if (/*@>6f2cd*/tmp_0/*@>5bead*/ != /*@>70702*/0L) {
+    /*@>6f2d2*/tmp/*@>5beb3*/ = /*@>77a81*/error_buffer_is_empty(%<SLibCG_DumpSSCode("/*@[7d53a*/",(LibGetRTModelErrorStatus()),"/*@]*/")>);
+    /*@>5bec8*/if (/*@>6f2d4*/tmp) {
+        /*@>6f2d7*/msg/*@>5bebc*/ = /*@>77a83*/rtw_diagnostics_msg(/*@>6f2da*/diagnosticTree);
+        %<SLibCG_DumpSSCode("/*@[7d53e*/",(LibSetRTModelErrorStatus("/*@>6f2dc*/msg")),"/*@]*/")>;
+    }
+}
+/* {E!d126}End of Update for SimscapeExecutionBlock: '<S222>/STATE_1' */
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedUpdateLocalVars", localVarDecl)>
+%endfunction
+%function UpdateFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Update(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 1, fcnProtoType)>
+%endfunction

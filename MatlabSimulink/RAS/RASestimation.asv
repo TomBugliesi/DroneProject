@@ -135,11 +135,11 @@ input2 = [S*[x1z;x2z;0;0;0;0;0];...
     S*[0;0;0;0;0;0;x1th3]];
 %% Run ras estimation
 % Dati
-Rmin = 500;
-Rmax = 10000;
-N_iter_R = 300;
-N_iter_Q = 10;
-DR = 250;
+Rmin = 10/10;
+Rmax = 5000/10;
+N_iter_R = 150;
+N_iter_Q = 60;
+DR = 100/10;
 
 ras_estimate(A_s_hat,input1,input2,Rmin,Rmax,DR,@x_d_fun_ras,N_iter_R,N_iter_Q)
 

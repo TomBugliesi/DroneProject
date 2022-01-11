@@ -1,0 +1,37 @@
+%implements s1_b0_5hts_Terminate "C"
+
+%function Terminate(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+codertarget_arduinobase_inter_T *obj;
+%closefile localVarDecl
+/* {S!d128}Terminate for MATLABSystem: '<Root>/I2C Read' */
+/*@>6f394*/obj/*@>5bf27*/ = &/*@>7bb08*/DinamicaNonLineare_Controllo_DW./*@>7e86f*/obj;
+/*@>5bf37*/if (!/*@<5bf31*//*@>7bb0e*/DinamicaNonLineare_Controllo_DW./*@>7e872*/obj.matlabCodegenIsDeleted) {
+    /*@>7bb14*/DinamicaNonLineare_Controllo_DW./*@>7e875*/obj./*@>7e86c*/matlabCodegenIsDeleted/*@>5bf2d*/ = /*@>6f398*/true;
+    /*@>5bf50*/if ((/*@>7bb20*/DinamicaNonLineare_Controllo_DW./*@>7e87b*/obj.isInitialized/*@>5bf4f*/ == /*@>70734*/1L)/*@>7d5b9*/ && /*@>7bb2c*/DinamicaNonLineare_Controllo_DW./*@>7e881*/obj.isSetupComplete) {
+        /*@>77a87*/MW_I2C_Close(/*@>6f3a5*/obj->I2CDriverObj.MW_I2C_HANDLE);
+    }
+}
+/* {E!d128}End of Terminate for MATLABSystem: '<Root>/I2C Read' */
+
+/* {S!d130}Terminate for SimscapeExecutionBlock: '<S222>/STATE_1' */
+/*@>77a89*/neu_destroy_diagnostic_manager(/*@>62d5c*/(NeuDiagnosticManager *)/*@>7bb1a*/DinamicaNonLineare_Controllo_DW./*@>7e878*/STATE_1_DiagMgr);
+/*@>77a8b*/nesl_destroy_simulation_data(/*@>62d64*/(NeslSimulationData *)/*@>7bb26*/DinamicaNonLineare_Controllo_DW./*@>7e87e*/STATE_1_SimData);
+/*@>77a8d*/nesl_erase_simulator(/*@>6f38f*/"DinamicaNonLineare_Controllo/simscape/Solver Configuration_1");
+/*@>77a8f*/nesl_destroy_registry();
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedTerminateLocalVars", localVarDecl)>
+%endfunction
+%function TerminateFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Terminate(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 2, fcnProtoType)>
+%endfunction
