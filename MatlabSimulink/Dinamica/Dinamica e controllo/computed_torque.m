@@ -1,0 +1,25 @@
+function out = computed_torque(in)
+z = in(1);
+zp = in(2);
+zpp = in(3);
+th1 = in(4);
+th1p = in(5);
+th1pp = in(6);
+th2 = in(7);
+th2p = in(8);
+th2pp = in(9);
+th3 = in(10);
+th3p = in(11);
+th3pp = in(12);
+
+% [ms, t, l, Jm, k, J11, J12, J13, J22, J23, J33, g] = params_drone_CT;
+
+[ms, t, l, Jm, k, J11, J12, J13, J22, J23, J33, g] = params_drone;
+
+H = (ms*(g + zpp))/(cos(th1)*cos(th2));
+R = (J22^2*th1p^2*sin(2*th2)*sin(th3) + 2*J11^2*th2p*th3p*cos(th3)^3 - 2*J22^2*th2p*th3p*cos(th3)^3 + 2*J11*J22*th2pp*sin(th3) - 2*J11^2*th2p*th3p*cos(th3) + 2*J11^2*th1p*th2p*cos(th3)^3*sin(th2) - 2*J22^2*th1p*th2p*cos(th3)^3*sin(th2) - 2*J11*J33*th2p*th3p*cos(th3)^3 + 2*J22*J33*th2p*th3p*cos(th3)^3 + 2*J11*J22*th1pp*cos(th2)*cos(th3) + J11^2*th2p*th3p*sin(2*th3)*sin(th3) - J22^2*th2p*th3p*sin(2*th3)*sin(th3) - 2*J11^2*th1p*th2p*cos(th3)*sin(th2) + 2*J22^2*th1p*th3p*cos(th2)*sin(th3) + 2*J11*J22*th2p*th3p*cos(th3) + 2*J11*J33*th2p*th3p*cos(th3) - J22*J33*th1p^2*sin(2*th2)*sin(th3) - J11*J33*th2p*th3p*sin(2*th3)*sin(th3) + J22*J33*th2p*th3p*sin(2*th3)*sin(th3) - 2*J11*J22*th1p*th2p*cos(th3)*sin(th2) - 2*J11*J22*th1p*th3p*cos(th2)*sin(th3) + 2*J11*J33*th1p*th2p*cos(th3)*sin(th2) - 2*J22*J33*th1p*th3p*cos(th2)*sin(th3) + 2*J11^2*th1p*th2p*cos(th3)*sin(th2)*sin(th3)^2 - 2*J22^2*th1p*th2p*cos(th3)*sin(th2)*sin(th3)^2 - 2*J11*J33*th1p*th2p*cos(th3)^3*sin(th2) + 2*J22*J33*th1p*th2p*cos(th3)^3*sin(th2) - 2*J11*J33*th1p*th2p*cos(th3)*sin(th2)*sin(th3)^2 + 2*J22*J33*th1p*th2p*cos(th3)*sin(th2)*sin(th3)^2)/(2*J22*t*(cos(th3)^2 + sin(th3)^2));
+P = -(2*J22^2*th1p*th3p*cos(th2)*cos(th3)^3 - 2*J11^2*th2p*th3p*sin(th3) - J22^2*th1p^2*sin(2*th2)*cos(th3) - 2*J11^2*th1p*th3p*cos(th2)*cos(th3)^3 - 2*J11*J22*th2pp*cos(th3) - J11^2*th2p*th3p*sin(2*th3)*cos(th3) + J22^2*th2p*th3p*sin(2*th3)*cos(th3) + 2*J11^2*th2p*th3p*cos(th3)^2*sin(th3) - 2*J22^2*th2p*th3p*cos(th3)^2*sin(th3) + 2*J11*J22*th1pp*cos(th2)*sin(th3) - 2*J22^2*th1p*th3p*cos(th2)*cos(th3) - 2*J11^2*th1p*th2p*sin(th2)*sin(th3) + 2*J11*J22*th2p*th3p*sin(th3) + 2*J11*J33*th2p*th3p*sin(th3) - 2*J11^2*th1p^2*cos(th2)*cos(th3)^3*sin(th2) + 2*J22^2*th1p^2*cos(th2)*cos(th3)^3*sin(th2) + J22*J33*th1p^2*sin(2*th2)*cos(th3) + 2*J11*J22*th1p*th3p*cos(th2)*cos(th3) + 2*J22*J33*th1p*th3p*cos(th2)*cos(th3) - 2*J11*J22*th1p*th2p*sin(th2)*sin(th3) + 2*J11*J33*th1p*th2p*sin(th2)*sin(th3) - 2*J11^2*th1p^2*cos(th2)*cos(th3)*sin(th2)*sin(th3)^2 + 2*J22^2*th1p^2*cos(th2)*cos(th3)*sin(th2)*sin(th3)^2 + 2*J11*J33*th1p^2*cos(th2)*cos(th3)^3*sin(th2) - 2*J22*J33*th1p^2*cos(th2)*cos(th3)^3*sin(th2) - 2*J11^2*th1p*th3p*cos(th2)*cos(th3)*sin(th3)^2 + 2*J22^2*th1p*th3p*cos(th2)*cos(th3)*sin(th3)^2 + 2*J11*J33*th1p*th3p*cos(th2)*cos(th3)^3 - 2*J22*J33*th1p*th3p*cos(th2)*cos(th3)^3 + J11*J33*th2p*th3p*sin(2*th3)*cos(th3) - J22*J33*th2p*th3p*sin(2*th3)*cos(th3) - 2*J11*J33*th2p*th3p*cos(th3)^2*sin(th3) + 2*J22*J33*th2p*th3p*cos(th3)^2*sin(th3) + 2*J11*J33*th1p^2*cos(th2)*cos(th3)*sin(th2)*sin(th3)^2 - 2*J22*J33*th1p^2*cos(th2)*cos(th3)*sin(th2)*sin(th3)^2 + 2*J11*J33*th1p*th3p*cos(th2)*cos(th3)*sin(th3)^2 - 2*J22*J33*th1p*th3p*cos(th2)*cos(th3)*sin(th3)^2)/(2*J11*l*(cos(th3)^2 + sin(th3)^2));
+Yp = (J11^2*J33*th1p*th2p - J11*J33^2*th1p*th2p + J11*J22*J33*th1p*th2p - J11*J22^2*th1p*th2p*cos(th2)^2 + J11^2*J22*th1p*th2p*cos(th2)^2 + J11*J33^2*th1p*th2p*cos(th2)^2 - J11^2*J33*th1p*th2p*cos(th2)^2 + J11*J33^2*th1p*th2p*cos(th3)^2 - J11^2*J33*th1p*th2p*cos(th3)^2 - J22*J33^2*th1p*th2p*cos(th3)^2 + J22^2*J33*th1p*th2p*cos(th3)^2 + J11*J33^2*th1p*th2p*sin(th2)^2 - J11^2*J33*th1p*th2p*sin(th2)^2 + J11*J22*J33*th3pp*cos(th2) - J11*J22^2*th1p^2*cos(th2)^3*cos(th3)*sin(th3) + J11^2*J22*th1p^2*cos(th2)^3*cos(th3)*sin(th3) + J11*J33^2*th1p^2*cos(th2)^3*cos(th3)*sin(th3) - J11^2*J33*th1p^2*cos(th2)^3*cos(th3)*sin(th3) - J22*J33^2*th1p^2*cos(th2)^3*cos(th3)*sin(th3) + J22^2*J33*th1p^2*cos(th2)^3*cos(th3)*sin(th3) - J11*J22*J33*th1p*th2p*sin(th2)^2 + J11*J22*J33*th1pp*cos(th2)*sin(th2) + 2*J11*J22^2*th1p*th2p*cos(th2)^2*cos(th3)^2 - 2*J11^2*J22*th1p*th2p*cos(th2)^2*cos(th3)^2 - J11*J33^2*th1p*th2p*cos(th2)^2*cos(th3)^2 + J11^2*J33*th1p*th2p*cos(th2)^2*cos(th3)^2 + J22*J33^2*th1p*th2p*cos(th2)^2*cos(th3)^2 - J22^2*J33*th1p*th2p*cos(th2)^2*cos(th3)^2 - J11*J33^2*th1p*th2p*cos(th3)^2*sin(th2)^2 + J11^2*J33*th1p*th2p*cos(th3)^2*sin(th2)^2 + J22*J33^2*th1p*th2p*cos(th3)^2*sin(th2)^2 - J22^2*J33*th1p*th2p*cos(th3)^2*sin(th2)^2 + J11*J22^2*th2p^2*cos(th2)*cos(th3)*sin(th3) - J11^2*J22*th2p^2*cos(th2)*cos(th3)*sin(th3) - J11*J33^2*th1p^2*cos(th2)*cos(th3)*sin(th3) + J11^2*J33*th1p^2*cos(th2)*cos(th3)*sin(th3) + J22*J33^2*th1p^2*cos(th2)*cos(th3)*sin(th3) - J22^2*J33*th1p^2*cos(th2)*cos(th3)*sin(th3) + J11*J33^2*th1p^2*cos(th2)*cos(th3)*sin(th2)^2*sin(th3) - J11^2*J33*th1p^2*cos(th2)*cos(th3)*sin(th2)^2*sin(th3) - J22*J33^2*th1p^2*cos(th2)*cos(th3)*sin(th2)^2*sin(th3) + J22^2*J33*th1p^2*cos(th2)*cos(th3)*sin(th2)^2*sin(th3))/(J11*J22*Jm*k*cos(th2));
+out = [H,R,P,Yp];
+
+end

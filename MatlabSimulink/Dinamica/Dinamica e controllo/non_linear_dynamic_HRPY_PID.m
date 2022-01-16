@@ -1,4 +1,4 @@
-function Xp = non_linear_dynamic_HRPY(X)
+function Xp = non_linear_dynamic_HRPY_PID(X)
 x = X(1);
 y = X(2);
 z = X(3);
@@ -13,14 +13,21 @@ th2p = X(11);
 th3p = X(12);
 
 %% Ingressi 
-H = X(13);
-R = X(14);
-P = X(15);
-Y = X(16);
-Hp = X(17);
-Rp = X(18);
-Pp = X(19);
-Yp = X(20);
+% Parametri PID
+kz_p = 150;
+kz_d = 14;
+kz_i = 8;
+kR_p = 1;
+kR_d = 1;
+kR_i = 0.5;
+kth3_p = 1;
+kth3_d = 1;
+kth3_i = 0.5;
+
+H = kz_p*(X(13))+kz_d*(X(14))+kz_i*(X(15));
+R = kR_p*(X(16))+kR_d*(X(17))+kR_i*(X(18));
+P = kR_p*(X(19))+kR_d*(X(20))+kR_i*(X(21));
+Yp = kth3_p*(X(22))+kth3_d*(X(23))+kth3_i*(X(24));
 %% Parametri
 
 [ms, t, l, Jm, k, J11, J12, J13, J22, J23, J33, g] = params_drone;

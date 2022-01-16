@@ -159,7 +159,7 @@ D = sym(zeros(4,4));
 %% Matrice di raggiungibilità
 Rr = B;
 for I=2:(size(A,1)-1)
-    Rr = [Rr,A*Rr];
+    Rr = [B,A*Rr];
     if rank(Rr)==size(A,1)
         break
     end
@@ -170,7 +170,7 @@ Rr
 %% Matrice di osservabilità
 O = C;
 for I=2:(size(A,1)-1)
-   O = [O;C*A];
+   O = [C;O*A];
    if rank(O)==size(A,1)
        break
    end
@@ -206,7 +206,7 @@ D_num = eval(D);
 %% Matrice di raggiungibilità stato semplificato
 R_num = B_num;
 for I=2:(size(A_num,1)-1)
-    R_num = [R_num,A_num*R_num];
+    R_num = [B_num,A_num*R_num];
     if rank(R_num)==size(A_num,1)
         break
     end
@@ -217,7 +217,7 @@ R_num
 %% Matrice di osservabilità stato semplificato
 O_num = C_num;
 for I=2:(size(A_num,1)-1)
-   O_num = [O_num;C_num*A_num];
+   O_num = [C_num;O_num*A_num];
    if rank(O_num)==size(A_num,1)
        break
    end
@@ -231,6 +231,7 @@ sys_tf_num = tf(sys_num);
 % step(sys_num);
 T = 0.002;
 [A_num_d,B_num_d,C_num_d,D_num_d] = c2dt(A_num,B_num,C_num,T,0);
+
 %% Funzioni utili
 % definiscono la matrice antisimmetrica per la scrittura del prodotto
 % vettoriale e il vettore associato alla forma antisimmetrica

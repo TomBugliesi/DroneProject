@@ -1,4 +1,4 @@
-function Xp = non_linear_dynamic_HRPY(X)
+function Xp = non_linear_dynamic_HRPY_CT(X)
 x = X(1);
 y = X(2);
 z = X(3);
@@ -16,11 +16,7 @@ th3p = X(12);
 H = X(13);
 R = X(14);
 P = X(15);
-Y = X(16);
-Hp = X(17);
-Rp = X(18);
-Pp = X(19);
-Yp = X(20);
+Yp = X(16);
 %% Parametri
 
 [ms, t, l, Jm, k, J11, J12, J13, J22, J23, J33, g] = params_drone;
@@ -30,9 +26,9 @@ Yp = X(20);
 Xp(1) = xp;
 Xp(2) = yp;
 Xp(3) = zp;
-Xp(4) = (sin(th2)*(H + g*ms))/ms;
-Xp(5) = -(cos(th2)*sin(th1)*(H + g*ms))/ms;
-Xp(6) = (H*cos(th1)*cos(th2) - g*ms + g*ms*cos(th1)*cos(th2))/ms;
+Xp(4) = (H*sin(th2))/ms;
+Xp(5) = -(H*cos(th2)*sin(th1))/ms;
+Xp(6) = -(g*ms - H*cos(th1)*cos(th2))/ms;
 Xp(7) = th1p;
 Xp(8) = th2p;
 Xp(9) = th3p;
